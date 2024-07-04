@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/test")
 public class TestController {
 
+    @GetMapping("/ping")
+    public String ping() {
+        return "Up and running!";
+    }
+
     @GetMapping("/ping-body")
     public ResponseEntity<String> pingWithResponseEntity() {
-        //TODO de facut dupa masa
-        return new ResponseEntity<>("RsadsrsdfsfsfRResponseEntity: Up and running!", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("ResponseEntity: Up and running!", HttpStatus.ACCEPTED);
     }
 
 }
