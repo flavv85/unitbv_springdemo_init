@@ -1,6 +1,15 @@
 # unitbv_springdemo_init
 Spring Boot app with H2 dDB and CRUD API
 
+JAVA 17 with maven
+pom dependecies:
+- spring-boot-starter-web
+- spring-boot-starter-data-jpa
+- h2
+- flyway-core
+- lombok
+- spring-boot-starter-test
+
 Gym fitness club
 
 About the project
@@ -32,3 +41,4 @@ o	If more than 6 members should suggest creating a new class
 -	Boolean isReady
 o	Minimum of 3 members to be true
 ![image](https://github.com/flavv85/unitbv_springdemo_init/assets/60285022/2469a9c8-3c07-4e7c-84af-5f6191ab8969)
+
