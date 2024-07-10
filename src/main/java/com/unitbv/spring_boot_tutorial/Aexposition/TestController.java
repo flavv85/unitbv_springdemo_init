@@ -12,7 +12,8 @@ public class TestController {
 
     @GetMapping("/ping-body")
     public ResponseEntity<String> pingWithResponseEntity() {
-        return new ResponseEntity<>("RdsrsdfsfsfRResponseEntity: Up and running!", HttpStatus.ACCEPTED);
+        //TODO de facut dupa masa
+        return new ResponseEntity<>("RsadsrsdfsfsfRResponseEntity: Up and running!", HttpStatus.ACCEPTED);
     }
 
 }
