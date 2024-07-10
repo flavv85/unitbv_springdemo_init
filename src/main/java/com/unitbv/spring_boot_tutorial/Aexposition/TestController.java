@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/test")
 public class TestController {
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "Up and running!";
-    }
-
     @GetMapping("/ping-body")
     public ResponseEntity<String> pingWithResponseEntity() {
         return new ResponseEntity<>("ResponseEntity: Up and running!", HttpStatus.ACCEPTED);
