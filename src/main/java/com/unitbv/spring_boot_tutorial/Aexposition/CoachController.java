@@ -36,4 +36,6 @@ public class CoachController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    //TODO getbyid de coach
+
 }
