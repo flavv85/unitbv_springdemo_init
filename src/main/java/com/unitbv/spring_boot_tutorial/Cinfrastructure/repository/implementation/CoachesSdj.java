@@ -26,4 +26,11 @@ public class CoachesSdj implements Coaches {
     public void createOrUpdate(Coach coach) {
         coachRepository.save(coach);
     }
+
+    @Override
+    public Coach getById(String Id) {
+        return coachRepository.findById(Id).get();
+    }
+
+
 }

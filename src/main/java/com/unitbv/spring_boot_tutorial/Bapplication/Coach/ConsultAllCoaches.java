@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.coach;
+package com.unitbv.spring_boot_tutorial.Bapplication.Coach;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;

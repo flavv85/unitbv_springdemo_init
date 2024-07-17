@@ -3,8 +3,9 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;
+import com.unitbv.spring_boot_tutorial.Bapplication.Coach.ConsultAllCoaches;
+import com.unitbv.spring_boot_tutorial.Bapplication.Coach.CreateCoach;
+import com.unitbv.spring_boot_tutorial.Bapplication.Coach.GetCoachById;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ public class CoachController {
     ConsultAllCoaches consultAllCoaches;
     CoachMapperService coachMapperService;
     CreateCoach createCoach;
+    GetCoachById getCoachById;
 
     @GetMapping
     public ResponseEntity<List<ConsultCoachDto>> consultAll() {
@@ -34,6 +36,13 @@ public class CoachController {
         Coach toBePersistedCoach = coachMapperService.mapToEntity(dto, null);
         createCoach.create(toBePersistedCoach);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/findbyid/{Id}")
+    public ResponseEntity<ConsultCoachDto> consult(@PathVariable String Id) {
+        Coach coach = this.getCoachById.getById(Id);
+        ConsultCoachDto coachDto = this.coachMapperService.mapFromDomain(coach);
+        return new ResponseEntity<>(coachDto, HttpStatus.OK);
     }
 
 }
