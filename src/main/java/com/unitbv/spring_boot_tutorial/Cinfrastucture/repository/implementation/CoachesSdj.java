@@ -1,6 +1,6 @@
-package com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementation;
+package com.unitbv.spring_boot_tutorial.Cinfrastucture.repository.implementation;
 
-import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
+import com.unitbv.spring_boot_tutorial.Cinfrastucture.repository.CoachRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
 import lombok.AccessLevel;
@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+
 public class CoachesSdj implements Coaches {
 
     CoachRepository coachRepository;
@@ -26,4 +27,12 @@ public class CoachesSdj implements Coaches {
     public void createOrUpdate(Coach coach) {
         coachRepository.save(coach);
     }
+
+    @Override
+    public Coach getCoachById(String id) {
+       return coachRepository.findById(id).orElse(null);
+    }
+
+
+
 }

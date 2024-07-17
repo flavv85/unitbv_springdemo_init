@@ -22,9 +22,10 @@ public class Member {
     @Column(name = "member_id")
     String id;
 
-    @Column(name = "name")
+    @Column(name = "member_name")
     String name;
 
-    @Column(name = "nickname")
+    @Column(name = "member_nickname")
     String nickname;
+
 }

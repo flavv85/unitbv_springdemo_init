@@ -7,8 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Builder
 @Getter
-public class ConsultCoachDto {
+public class ConsultMemberDto {
+
     String id;
     String name;
-
+    String nickname;
 }

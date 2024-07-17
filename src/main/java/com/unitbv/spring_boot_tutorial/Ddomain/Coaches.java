@@ -5,4 +5,6 @@ import java.util.List;
 public interface Coaches {
     List<Coach> getAllCoaches();
     void createOrUpdate(Coach coach);
+    Coach getCoachById(String id);
+
 }
