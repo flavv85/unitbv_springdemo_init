@@ -27,4 +27,6 @@ public class Member {
 
     @Column(name = "nickname")
     String nickname;
+
+
 }

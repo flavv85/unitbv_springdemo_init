@@ -33,7 +33,7 @@ public class FitnessClass {
     Coach coach;
 
     @ManyToMany
-    @JoinTable(name = "FITNESS_CLASSES_MEMBERS",
+            @JoinTable(name = "fitness_classes_members",
             joinColumns = @JoinColumn(name = "fitness_class_id"),
             inverseJoinColumns = @JoinColumn(name = "member_id"))
     Set<Member> members = new HashSet<>();

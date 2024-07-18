@@ -18,6 +18,18 @@ public class CreateCoach {
 
     public void create(Coach coach) {
         //TODO add validation here for duration missing dates, missing ids and other properties
+        if(coach == null)
+        {
+            throw new IllegalArgumentException("Coach object cannot be null");
+        }
+        if(coach.getId() == null || coach.getId().trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Coach id cannot be null or empty");
+        }
+        if(coach.getName() == null || coach.getName().trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Coach name cannot be null or empty");
+        }
         coaches.createOrUpdate(coach);
     }
 

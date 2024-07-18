@@ -17,9 +17,9 @@ public class CreateUpdateCoachDto {
     }
 
 
-//    public List<CreateUpdateFitnessClassDto> fitnessClasses;
+    public List<CreateUpdateFitnessClassDto> fitnessClasses;
     //TODO add a also a list of fitnessClass objects to demonstrate the power of the @OneToMany / @ManyToOne
-//    public List<CreateUpdateFitnessClassDto> getFitnessClasses() {
-//        return fitnessClasses;
-//    }
+    public List<CreateUpdateFitnessClassDto> getFitnessClasses() {
+        return fitnessClasses;
+    }
 }
