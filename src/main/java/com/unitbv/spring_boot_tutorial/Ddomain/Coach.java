@@ -5,6 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.Optional;
+
+// get all pt fitness si coach cum a fost facut pana acum
+
 @Entity
 @Table(name = "coach")
 
@@ -39,4 +43,5 @@ public class Coach {
         this.id = id;
         this.name = name;
     }
+
 }
