@@ -3,12 +3,14 @@ package com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementatio
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -26,4 +28,8 @@ public class CoachesSdj implements Coaches {
     public void createOrUpdate(Coach coach) {
         coachRepository.save(coach);
     }
+    public Optional<Coach> getCoachById(String id){
+        return coachRepository.findById(id);
+    }
+
 }
