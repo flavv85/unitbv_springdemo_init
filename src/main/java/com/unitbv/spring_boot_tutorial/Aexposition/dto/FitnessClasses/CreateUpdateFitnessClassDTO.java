@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 public class CreateUpdateFitnessClassDTO {
+    public String coachID;
     public LocalDateTime startTime;
     public LocalDateTime endTime;
 

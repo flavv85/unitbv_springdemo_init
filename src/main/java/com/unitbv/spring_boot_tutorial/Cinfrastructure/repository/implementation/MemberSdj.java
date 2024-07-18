@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -24,5 +25,10 @@ public class MemberSdj  implements Members {
     public void CreateOrUpdate(Member member) {
         MemberRepository.save(member);
 
+    }
+
+    @Override
+    public Optional<Member> getMemberById(String id) {
+        return MemberRepository.findById(id);
     }
 }

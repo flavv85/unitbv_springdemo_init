@@ -9,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -24,5 +26,10 @@ public class FitnessClassesSdj implements FitnessClasses {
     public void CreateOrUpdate(FitnessClass fitnessClass) {
 
         FitnessClassesRepository.save(fitnessClass);
+    }
+
+    @Override
+    public Optional<FitnessClass> getFitnessClassById(String id) {
+        return FitnessClassesRepository.findById(id);
     }
 }
