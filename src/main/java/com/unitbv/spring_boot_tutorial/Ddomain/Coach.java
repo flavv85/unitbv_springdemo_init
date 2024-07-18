@@ -14,7 +14,7 @@ public class Coach {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "fitnessClass_id")
+    @JoinColumn(name = "fitness_class_id")
     private List<FitnessClass> fitnessClasses;
 
     public String getId() {
