@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -37,5 +38,14 @@ public class CoachController {
     }
 
     //TODO getbyid de coach
-
+    @GetMapping("/{id}")
+    public ResponseEntity<ConsultCoachDto> getById(@PathVariable String id) {
+        Optional<Coach> coach = consultAllCoaches.consultById(id);
+        if (coach.isPresent()) {
+            ConsultCoachDto coachDto = coachMapperService.mapFromDomain(coach.get());
+            return new ResponseEntity<>(coachDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

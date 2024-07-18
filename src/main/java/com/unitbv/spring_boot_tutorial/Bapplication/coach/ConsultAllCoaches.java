@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,5 +19,8 @@ public class ConsultAllCoaches {
 
     public List<Coach> consultAll() {
         return coaches.getAllCoaches();
+    }
+    public Optional<Coach> consultById(String id) {
+        return coaches.getCoachById(id);
     }
 }

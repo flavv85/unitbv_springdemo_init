@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -26,4 +27,10 @@ public class CoachesSdj implements Coaches {
     public void createOrUpdate(Coach coach) {
         coachRepository.save(coach);
     }
+
+    @Override
+    public Optional<Coach> getCoachById(String id) {
+        return coachRepository.findById(id);
+    }
+
 }
