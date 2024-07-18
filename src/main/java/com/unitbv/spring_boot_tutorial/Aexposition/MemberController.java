@@ -1,20 +1,15 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultMemberDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateMemberDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMemberDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllMembers;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateMember;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.MemberService;
-import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
+import com.unitbv.spring_boot_tutorial.Bapplication.member.ConsultAllMembers;
+import com.unitbv.spring_boot_tutorial.Bapplication.member.CreateMember;
+import com.unitbv.spring_boot_tutorial.Bapplication.member.MemberService;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

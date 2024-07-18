@@ -1,12 +1,11 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.ConsultCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CoachService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;
-import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementation.CoachesSdj;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

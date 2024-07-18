@@ -1,22 +1,23 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.coach;
+package com.unitbv.spring_boot_tutorial.Bapplication.member;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ConsultAllMembers {
+public class MemberService {
     Members members;
-    public List<Member> consultAll()
+
+    public Optional<Member> getMemberById(String id)
     {
-        return members.getAllMembers();
+        return members.getMemberById(id);
     }
 
 }
