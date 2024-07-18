@@ -1,7 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coaches.ConsultCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coaches.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;

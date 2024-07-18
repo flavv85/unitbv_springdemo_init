@@ -1,7 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Aexposition.mapper;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coaches.ConsultCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coaches.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
