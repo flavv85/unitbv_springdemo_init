@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.coach;
 
+import aj.org.objectweb.asm.commons.TryCatchBlockSorter;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
 import lombok.AccessLevel;
@@ -18,7 +19,7 @@ public class CreateCoach {
 
     public void create(Coach coach) {
         //TODO add validation here for duration missing dates, missing ids and other properties
-        coaches.createOrUpdate(coach);
+        if(coach.getId() != null) coaches.createOrUpdate(coach);
     }
 
 }

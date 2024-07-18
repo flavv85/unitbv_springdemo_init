@@ -8,23 +8,23 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 
-@Entity
-@Table(name = "member")
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Member {
+    @Entity
+    @Table(name = "member")
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    public class Member {
 
-    @Id
-    @Column(name = "member_id")
-    String id;
+        @Id
+        @Column(name = "member_id")
+        String id;
 
-    @Column(name = "name")
-    String name;
+        @Column(name = "name")
+        String name;
 
-    @Column(name = "nickname")
-    String nickname;
-}
+        @Column(name = "nickname")
+        String nickname;
+    }
