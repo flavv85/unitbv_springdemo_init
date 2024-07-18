@@ -10,9 +10,6 @@ import lombok.*;
 public class CreateUpdateCoachDto {
     public String name;
 
-    public String getName() {
-        return name;
-    }
 
 
 //    public List<CreateUpdateFitnessClassDto> fitnessClasses;
