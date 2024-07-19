@@ -19,9 +19,7 @@ public class FitnessClassMapper {
         return ConsultFitnessClassDto
                 .builder()
                 .id(fitnessClass.getId())
-                .coach(fitnessClass.getCoach())
                 .endTime(fitnessClass.getEndTime())
-                .members(fitnessClass.getMembers())
                 .startTime(fitnessClass.getStartTime())
                 .build();
     }

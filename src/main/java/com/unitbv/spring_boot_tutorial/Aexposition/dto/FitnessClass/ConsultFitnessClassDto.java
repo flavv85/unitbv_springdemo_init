@@ -17,6 +17,5 @@ public class ConsultFitnessClassDto {
     LocalDateTime startTime;
 
     LocalDateTime endTime;
-    Coach coach;
-    Set<Member> members;
+
 }
