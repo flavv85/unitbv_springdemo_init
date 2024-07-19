@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/fitnessClass")
+@RequestMapping("/api/fitness-class")
 public class FitnessClassController {
 
     private final CoachMapperService coachMapperService;
