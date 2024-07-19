@@ -19,6 +19,22 @@ public class CreateMember {
     Members members;
 
     public void create(Member member) {
+        if(member == null)
+        {
+            throw new IllegalArgumentException("Member cannot be null.");
+        }
+        if(member.getId() == null)
+        {
+            throw new IllegalArgumentException("Member id cannot be null.");
+        }
+        if(member.getName() == null)
+        {
+            throw new IllegalArgumentException("Member name cannot be null.");
+        }
+        if(member.getNickname() == null)
+        {
+            throw new IllegalArgumentException("Member nickname cannot be null.");
+        }
         members.createOrUpdate(member);
     }
 }

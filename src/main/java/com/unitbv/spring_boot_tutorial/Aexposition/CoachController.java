@@ -7,6 +7,7 @@ import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,12 @@ public class CoachController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ConsultCoachDto> getCoachById(@PathVariable String id){
+        Coach coach = coachMapperService.findCoachById(id);
+        ConsultCoachDto coachDto = coachMapperService.(coach);
+        return new ResponseEntity<>(coachDto, HttpStatus.OK);
+    }
     //TODO getbyid de coach
 
 }

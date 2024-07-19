@@ -19,6 +19,22 @@ public class CreateFitnessClass {
     FitnessClasses fitnessClasses;
 
     public void create(FitnessClass fitnessClass) {
+        if(fitnessClass == null)
+        {
+            throw new IllegalArgumentException("Fitness Class cannot be null.");
+        }
+        if(fitnessClass.getId() == null)
+        {
+            throw new IllegalArgumentException("Fitness Class id cannot be null.");
+        }
+        if(fitnessClass.getStartTime() == null)
+        {
+            throw new IllegalArgumentException("Fitness Clas start time cannot be null.");
+        }
+        if(fitnessClass.getEndTime() == null)
+        {
+            throw new IllegalArgumentException("Fitness Clas end time cannot be null.");
+        }
         fitnessClasses.createOrUpdate(fitnessClass);
     }
 }
