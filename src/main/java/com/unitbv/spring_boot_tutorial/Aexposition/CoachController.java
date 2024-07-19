@@ -42,10 +42,11 @@ public class CoachController {
 
     //TODO getbyid de coach
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Coach>> getCoachById(@PathVariable String id)
+    public ResponseEntity<ConsultCoachDto> getCoachById(@PathVariable String id)
     {
         Optional<Coach> coach = coachService.getCoachById(id);
-        return new ResponseEntity<>(coach, HttpStatus.OK);
+        ConsultCoachDto consultCoachDto = coachMapperService.mapFromDomain(coach.get());
+        return new ResponseEntity<>(consultCoachDto, HttpStatus.OK);
     }
 
 }

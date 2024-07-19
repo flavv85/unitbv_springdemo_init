@@ -45,10 +45,11 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Member>> getMemberById(@PathVariable String id)
+    public ResponseEntity<ConsultMemberDto> getMemberById(@PathVariable String id)
     {
         Optional<Member> member = memberService.getMemberById(id);
-        return new ResponseEntity<>(member, HttpStatus.OK);
+        ConsultMemberDto consultMemberDto = memberMapperService.mapFromDomain(member.get());
+        return new ResponseEntity<>(consultMemberDto, HttpStatus.OK);
     }
 
 

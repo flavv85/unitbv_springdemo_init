@@ -41,10 +41,11 @@ public class FitnessClassController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<FitnessClass>> getFitnessClassById(@PathVariable String id)
+    public ResponseEntity<ConsultFitnessClassDto> getFitnessClassById(@PathVariable String id)
     {
         Optional<FitnessClass> fitnessClass = fitnessClassService.getMemberById(id);
-        return new ResponseEntity<>(fitnessClass, HttpStatus.OK);
+        ConsultFitnessClassDto consultFitnessClassDto = fitnessClassMapper.mapFromDomain(fitnessClass.get());
+        return new ResponseEntity<>(consultFitnessClassDto, HttpStatus.OK);
     }
 
 }
