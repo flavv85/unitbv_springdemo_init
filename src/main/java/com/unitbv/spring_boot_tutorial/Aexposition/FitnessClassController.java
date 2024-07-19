@@ -37,4 +37,11 @@ public class FitnessClassController {
         createFitnessClass.create(toBePersistedFitnessClass);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FitnessClass> getById(@PathVariable String id)
+    {
+        FitnessClass fitnessClass = createFitnessClass.getById(id);
+        return ResponseEntity.ok(fitnessClass);
+    }
 }

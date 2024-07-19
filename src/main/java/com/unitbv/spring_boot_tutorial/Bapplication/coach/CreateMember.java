@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.coach;
 
+import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.MemberRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import lombok.AccessLevel;
@@ -15,6 +16,11 @@ public class CreateMember {
 
     @Autowired
     Members members;
+
+    @Autowired
+    MemberRepository MemberRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
     public void create(Member member)
     {
@@ -38,4 +44,8 @@ public class CreateMember {
         members.createOrUpdate(member);
     }
 
+    public Member getById(String id)
+    {
+        return memberRepository.findById(id).orElseThrow(); new ResourceNotFoundException("Member with the id " + id + " not found");
+    }
 }

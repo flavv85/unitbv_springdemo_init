@@ -37,5 +37,11 @@ public class CoachController {
     }
 
     //TODO getbyid de coach
+    @GetMapping("/{id}")
+    public ResponseEntity<Coach> getById(@PathVariable String id)
+    {
+        Coach coach = createCoach.getById(id);
+        return ResponseEntity.ok(coach);
+    }
 
 }

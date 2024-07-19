@@ -25,6 +25,8 @@ public class FitnessClassMapperService {
     public FitnessClass mapToEntity(CreateUpdateFitnessClassDto dto, String fitnessClassId) {
         FitnessClass fitnessClass = new FitnessClass();
         fitnessClass.setId(StringUtils.hasLength(fitnessClassId) ? fitnessClassId : String.valueOf(UUID.randomUUID()));
+        fitnessClass.setStartTime(dto.getStartTime());
+        fitnessClass.setEndTime(dto.getEndTime());
         return fitnessClass;
     }
 }

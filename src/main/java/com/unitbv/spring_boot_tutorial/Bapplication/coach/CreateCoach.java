@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.coach;
 
+import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
 import lombok.AccessLevel;
@@ -15,6 +16,8 @@ public class CreateCoach {
 
     @Autowired
     Coaches coaches;
+    @Autowired
+    private CoachRepository coachRepository;
 
     public void create(Coach coach) {
         //TODO add validation here for duration missing dates, missing ids and other properties
@@ -33,4 +36,7 @@ public class CreateCoach {
         coaches.createOrUpdate(coach);
     }
 
+    public Coach getById(String id) {
+        return coachRepository.findById(id).orElseThrow(); new ResourceNotFoundException("Coach cannot find by id: " + id);
+    }
 }

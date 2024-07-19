@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.coach;
 
+import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.FitnessClassRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import lombok.AccessLevel;
@@ -17,6 +18,9 @@ public class CreateFitnessClass {
 
     @Autowired
     FitnessClasses fitnessClasses;
+
+    @Autowired
+    FitnessClassRepository fitnessClassRepository;
 
     public void create(FitnessClass fitnessClass)
     {
@@ -38,12 +42,11 @@ public class CreateFitnessClass {
         {
             throw new IllegalArgumentException("FitnessClass endTime cannot be null or cannot be before the start time");
         }
-
-        if(fitnessClass.getCoach() == null)
-        {
-            throw new IllegalArgumentException("FitnessClass coach cannot be null");
-        }
-
         fitnessClasses.createOrUpdate(fitnessClass);
+    }
+
+    public FitnessClass getById(String id)
+    {
+        return fitnessClassRepository.findById(id).orElseThrow(); new ResourceNotFoundException("FitnessClass with id " + id + " not found");
     }
 }

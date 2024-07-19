@@ -39,4 +39,10 @@ public class MemberController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Member> getById(@PathVariable String id)
+    {
+        Member member = createMember.getById(id);
+        return ResponseEntity.ok(member);
+    }
 }
