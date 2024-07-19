@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.coach;
+package com.unitbv.spring_boot_tutorial.Aexposition.Bapplication.fitnessClass;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
