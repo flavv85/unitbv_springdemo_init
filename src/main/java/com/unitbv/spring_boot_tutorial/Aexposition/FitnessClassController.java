@@ -2,6 +2,7 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllFitnessClasses;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateFitnessClass;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequestMapping("/api/fitnessClass")
 public class FitnessClassController {
 
+    private final CoachMapperService coachMapperService;
     ConsultAllFitnessClasses consultAllFitnessClasses;
     FitnessClassMapperService fitnessClassMapperService;
     CreateFitnessClass createFitnessClass;
@@ -39,9 +41,9 @@ public class FitnessClassController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FitnessClass> getById(@PathVariable String id)
+    public ResponseEntity<ConsultFitnessClassDto> getById(@PathVariable String id)
     {
         FitnessClass fitnessClass = createFitnessClass.getById(id);
-        return ResponseEntity.ok(fitnessClass);
+        return ResponseEntity.ok(fitnessClassMapperService.mapFromDomain(fitnessClass));
     }
 }
