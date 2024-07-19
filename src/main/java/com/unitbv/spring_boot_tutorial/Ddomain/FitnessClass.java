@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "fitness_class")
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)

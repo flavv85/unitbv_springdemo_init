@@ -46,6 +46,6 @@ public class CreateMember {
 
     public Member getById(String id)
     {
-        return memberRepository.findById(id).orElseThrow(); new ResourceNotFoundException("Member with the id " + id + " not found");
+        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Member with the id " + id + " not found"));
     }
 }

@@ -11,16 +11,18 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@Service
 @AllArgsConstructor
+@Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CreateFitnessClass {
 
-    @Autowired
     FitnessClasses fitnessClasses;
-
-    @Autowired
     FitnessClassRepository fitnessClassRepository;
+
+//    public CreateFitnessClass(FitnessClasses fitnessClasses, FitnessClassRepository fitnessClassRepository) {
+//        this.fitnessClasses = fitnessClasses;
+//        this.fitnessClassRepository = fitnessClassRepository;
+//    }
 
     public void create(FitnessClass fitnessClass)
     {
@@ -47,6 +49,6 @@ public class CreateFitnessClass {
 
     public FitnessClass getById(String id)
     {
-        return fitnessClassRepository.findById(id).orElseThrow(); new ResourceNotFoundException("FitnessClass with id " + id + " not found");
+        return fitnessClassRepository.findById(id).orElseThrow(() -> new RuntimeException("FitnessClass with id " + id + " not found"));
     }
 }

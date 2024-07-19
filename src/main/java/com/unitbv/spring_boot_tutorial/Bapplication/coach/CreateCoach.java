@@ -37,6 +37,6 @@ public class CreateCoach {
     }
 
     public Coach getById(String id) {
-        return coachRepository.findById(id).orElseThrow(); new ResourceNotFoundException("Coach cannot find by id: " + id);
+        return coachRepository.findById(id).orElseThrow(() -> new RuntimeException("ceva"));
     }
 }

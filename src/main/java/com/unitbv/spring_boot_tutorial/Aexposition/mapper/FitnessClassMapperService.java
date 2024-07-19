@@ -19,6 +19,9 @@ public class FitnessClassMapperService {
     public ConsultFitnessClassDto mapFromDomain(FitnessClass fitnessClass) {
         return ConsultFitnessClassDto
                 .builder()
+                .id(fitnessClass.getId())
+                .startTime(fitnessClass.getStartTime())
+                .endTime(fitnessClass.getEndTime())
                 .build();
     }
 
