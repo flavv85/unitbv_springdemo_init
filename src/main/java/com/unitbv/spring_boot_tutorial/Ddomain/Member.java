@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 
 @Entity
@@ -13,6 +15,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -27,4 +30,6 @@ public class Member {
 
     @Column(name = "nickname")
     String nickname;
+
+
 }

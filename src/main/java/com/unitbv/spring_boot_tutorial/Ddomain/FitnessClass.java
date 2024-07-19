@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
