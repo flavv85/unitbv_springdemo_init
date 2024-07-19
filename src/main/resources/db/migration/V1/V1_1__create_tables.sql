@@ -13,7 +13,7 @@ CREATE TABLE COACH
 
 CREATE TABLE FITNESS_CLASS
 (
-    coach_id VARCHAR(36) NOT NULL,
+    coach_id VARCHAR(36),
     fitness_class_id VARCHAR(36) NOT NULL,
     start_time TIMESTAMP,
     end_time TIMESTAMP,
