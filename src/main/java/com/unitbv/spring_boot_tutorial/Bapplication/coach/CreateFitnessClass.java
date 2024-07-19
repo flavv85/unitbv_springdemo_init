@@ -4,6 +4,8 @@ import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+
 public class CreateFitnessClass {
-    @Autowired
+    //@Autowired
     FitnessClasses fitnessClasses;
 
     public void createFitnessClass(FitnessClass fitnessClass) {

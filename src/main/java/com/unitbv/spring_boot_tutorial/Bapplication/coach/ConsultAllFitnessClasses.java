@@ -4,8 +4,11 @@ import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +18,10 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 
 public class ConsultAllFitnessClasses {
-    FitnessClasses fitnessclasses;
+
+    FitnessClasses fitnessClasses;
 
     public List<FitnessClass> consultAll() {
-        return fitnessclasses.getAllClasses();
+        return fitnessClasses.getAllClasses();
     }
 }
