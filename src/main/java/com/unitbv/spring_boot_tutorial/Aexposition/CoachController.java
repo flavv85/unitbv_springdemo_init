@@ -39,10 +39,11 @@ public class CoachController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ConsultCoachDto> getCoachById(@PathVariable String id){
-        Coach coach = coachMapperService.findCoachById(id);
-        ConsultCoachDto coachDto = coachMapperService.(coach);
-        return new ResponseEntity<>(coachDto, HttpStatus.OK);
+        //TODO metoda de service de getById(id)
+        //TODO de convertit din ENTITATE in DTO
+        //TODO de returnat dto + http status
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    //TODO getbyid de coach
 
 }
