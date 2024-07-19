@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Aexposition.dto;
+package com.unitbv.spring_boot_tutorial.Aexposition.dto.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Builder
 @Getter
-public class ConsultCoachDto {
+public class ConsultMemberDto {
     String id;
     String name;
+    String nickname;
 }

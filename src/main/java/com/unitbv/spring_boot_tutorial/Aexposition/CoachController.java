@@ -1,8 +1,9 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.ConsultCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
+import com.unitbv.spring_boot_tutorial.Bapplication.coach.CoachService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class CoachController {
     ConsultAllCoaches consultAllCoaches;
     CoachMapperService coachMapperService;
     CreateCoach createCoach;
+
+    CoachService coachService;
 
     @GetMapping
     public ResponseEntity<List<ConsultCoachDto>> consultAll() {
@@ -37,5 +41,11 @@ public class CoachController {
     }
 
     //TODO getbyid de coach
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Coach>> getCoachById(@PathVariable String id)
+    {
+        Optional<Coach> coach = coachService.getCoachById(id);
+        return new ResponseEntity<>(coach, HttpStatus.OK);
+    }
 
 }
