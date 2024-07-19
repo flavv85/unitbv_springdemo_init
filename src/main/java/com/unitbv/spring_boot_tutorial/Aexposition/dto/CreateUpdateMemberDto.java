@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Aexposition.dto.Member;
+package com.unitbv.spring_boot_tutorial.Aexposition.dto;
 
 public class CreateUpdateMemberDto {
     public String name;

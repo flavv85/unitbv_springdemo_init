@@ -1,7 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.ConsultFitnessClassDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdateFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapper;
 import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.ConsultAllFitnessClasses;
 import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.CreateFitnessClass;

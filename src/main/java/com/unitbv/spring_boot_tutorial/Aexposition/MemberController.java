@@ -1,7 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMemberDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultMemberDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.member.ConsultAllMembers;
 import com.unitbv.spring_boot_tutorial.Bapplication.member.CreateMember;

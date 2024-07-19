@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass;
+package com.unitbv.spring_boot_tutorial.Aexposition.dto;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
