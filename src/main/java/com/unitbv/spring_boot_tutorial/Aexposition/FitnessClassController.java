@@ -1,13 +1,10 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultFitnessClassDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllFitnessClasses;
 import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateFitnessClass;
-import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
