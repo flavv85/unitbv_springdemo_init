@@ -24,11 +24,6 @@ public class CoachesSdj implements Coaches {
         return coachRepository.findAll();
     }
 
-    public Optional<Coach> getCoachById(String id)
-    {
-        return coachRepository.findById(id);
-    }
-
 
     @Override
     public void createOrUpdate(Coach coach) {

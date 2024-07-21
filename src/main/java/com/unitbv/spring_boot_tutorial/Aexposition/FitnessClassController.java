@@ -2,11 +2,12 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.ConsultFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdateFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMemberDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapper;
-import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.ConsultAllFitnessClasses;
-import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.CreateFitnessClass;
-import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.FitnessClassService;
+import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.*;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
+import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,9 @@ public class FitnessClassController {
     FitnessClassMapper fitnessClassMapper;
     CreateFitnessClass createFitnessClass;
     FitnessClassService fitnessClassService;
+
+    UpdateFitnessClass updateFitnessClass;
+    DeleteFitnessClass deleteFitnessClass;
 
     @GetMapping
     public ResponseEntity<List<ConsultFitnessClassDto>> consultAll()
@@ -46,6 +50,22 @@ public class FitnessClassController {
         Optional<FitnessClass> fitnessClass = fitnessClassService.getMemberById(id);
         ConsultFitnessClassDto consultFitnessClassDto = fitnessClassMapper.mapFromDomain(fitnessClass.get());
         return new ResponseEntity<>(consultFitnessClassDto, HttpStatus.OK);
+    }
+
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ConsultMemberDto> updateMember(
+            @PathVariable String id,
+            @RequestBody CreateUpdateFitnessClassDto dto) {
+        FitnessClass toBeUpdatedFitnessClass = fitnessClassMapper.mapToEntity(dto, id);
+        updateFitnessClass.update(toBeUpdatedFitnessClass);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteCoach(@PathVariable(value = "id") String id) {
+        deleteFitnessClass.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

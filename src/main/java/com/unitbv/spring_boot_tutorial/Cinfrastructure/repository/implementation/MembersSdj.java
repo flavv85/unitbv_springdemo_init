@@ -33,4 +33,6 @@ public class MembersSdj implements Members{
         memberRepository.save(member);
     }
 
+    public void delete(Member member){memberRepository.delete(member);}
+
 }

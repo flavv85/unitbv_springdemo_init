@@ -7,4 +7,5 @@ public interface Members {
     List<Member> getAllMembers();
     Optional<Member> getMemberById(String id);
     void createOrUpdate(Member member);
+    void delete(Member member);
 }
