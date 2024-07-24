@@ -17,6 +17,7 @@ import java.util.Optional;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FitnessClassesSdj implements FitnessClasses {
     FitnessClassesRepository FitnessClassesRepository;
+    private final FitnessClassesRepository fitnessClassesRepository;
 
     @Override
     public List<FitnessClass> getFitnessClasses() {
@@ -33,4 +34,10 @@ public class FitnessClassesSdj implements FitnessClasses {
     public Optional<FitnessClass> getFitnessClassById(String id) {
         return FitnessClassesRepository.findById(id);
     }
+
+    @Override
+    public void deleteFitnessClass(FitnessClass fitnessClass) {
+        fitnessClassesRepository.delete(fitnessClass);
+    }
+
 }

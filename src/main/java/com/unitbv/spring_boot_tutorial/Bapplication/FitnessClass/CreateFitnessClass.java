@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @FieldDefaults(level= AccessLevel.PRIVATE,makeFinal=true)
-public class CreateUpdateFitnessClass {
+public class CreateFitnessClass {
     @Autowired
     FitnessClasses fitnessClasses;
 

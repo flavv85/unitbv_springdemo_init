@@ -3,9 +3,8 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMembersDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.Member.ConsultAllMembers;
-import com.unitbv.spring_boot_tutorial.Bapplication.Member.ConsultMembersById;
-import com.unitbv.spring_boot_tutorial.Bapplication.Member.CreateUpdateMember;
+import com.unitbv.spring_boot_tutorial.Bapplication.Member.*;
+import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.MemberRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,10 +19,14 @@ import java.util.Optional;
 @RequestMapping("/api/member")
 public class MemberController {
 
+    private final MemberRepository memberRepository;
     ConsultAllMembers consultAllMembers;
     MemberMapperService memberMapperService;
     ConsultMembersById consultMembersById;
-    CreateUpdateMember createMember;
+    CreateMember createMember;
+    UpdateMember updateMember;
+    DeleteMember deleteMember;
+
 
     @GetMapping
     public ResponseEntity<List<ConsultMembersDTO>> consultAll() {
@@ -48,5 +51,18 @@ public class MemberController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @DeleteMapping(value = "/delete-by-id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") String id) {
+        deleteMember.Delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable(value = "id") String id, @RequestBody CreateUpdateMemberDTO dto) {
+        Member toBePersistedMember = (Member) memberMapperService.mapToEntity(dto, id);
+        updateMember.Update(toBePersistedMember);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

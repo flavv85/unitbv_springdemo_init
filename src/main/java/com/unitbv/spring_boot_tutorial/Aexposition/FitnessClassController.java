@@ -4,9 +4,7 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.ConsultFitnessClassDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdateFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.ConsultAllFitnessClasses;
-import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.ConsultFitnessClassesByID;
-import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.CreateUpdateFitnessClass;
+import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.*;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +22,9 @@ public class FitnessClassController {
     FitnessClassMapperService fitnessClassMapperService;
     ConsultAllFitnessClasses consultAllFitnessClasses;
     ConsultFitnessClassesByID consultFitnessClassesByID;
-    CreateUpdateFitnessClass createFitnessClass;
+    CreateFitnessClass createFitnessClass;
+    DeleteFitnessClass deleteFitnessClass;
+    UpdateFitnessClass updateFitnessClass;
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateUpdateFitnessClassDto dto) {
@@ -47,5 +47,19 @@ public class FitnessClassController {
         List<FitnessClass> fitnessClasses = consultAllFitnessClasses.ConsultAll();
         List<ConsultFitnessClassDTO> fitnessClassDtoList = fitnessClasses.stream().map(fitnessClassMapperService::mapFromDomain).toList();
         return new ResponseEntity<>(fitnessClassDtoList, HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/delete-by-id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") String id) {
+        deleteFitnessClass.Delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ConsultFitnessClassDTO> updateCoach(
+            @PathVariable String id,
+            @RequestBody CreateUpdateFitnessClassDto dto) {
+        FitnessClass toBeUpdatedFitnessClass=fitnessClassMapperService.mapToEntity(dto,id);
+        updateFitnessClass.Update(toBeUpdatedFitnessClass);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

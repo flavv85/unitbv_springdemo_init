@@ -17,23 +17,26 @@ import java.util.UUID;
 @AllArgsConstructor
 @Service
 public class FitnessClassMapperService {
+
     CoachRepository coachRepository;
+
     public ConsultFitnessClassDTO mapFromDomain(FitnessClass fitnessClass) {
-        return ConsultFitnessClassDTO.builder()
-                .id(fitnessClass.getId())
-                .coachID( fitnessClass.getCoach() != null ? fitnessClass.getCoach().getId() : null)
-                .startDate(fitnessClass.getStartTime())
-                .endDate(fitnessClass.getEndTime())
-                .build();
+        return new ConsultFitnessClassDTO(
+                fitnessClass.getId(),
+                fitnessClass.getStartTime(),
+                fitnessClass.getEndTime(),
+                fitnessClass.getCoach() != null ? fitnessClass.getCoach().getName() : null
+        );
     }
 
-    public FitnessClass mapToEntity(CreateUpdateFitnessClassDto dto, String fitnessClassID) {
+    public FitnessClass mapToEntity(CreateUpdateFitnessClassDto dto, String fitnessClassId) {
         FitnessClass fitnessClass = new FitnessClass();
-        fitnessClass.setId(StringUtils.hasText(fitnessClassID) ? fitnessClassID : String.valueOf(UUID.randomUUID()));
-        fitnessClass.setStartTime(LocalDateTime.parse(dto.startTime));
-        fitnessClass.setEndTime(LocalDateTime.parse(dto.endTime));
-        if (StringUtils.hasText(dto.coachId)) {
-            Coach coach = coachRepository.findById(dto.coachId).orElse(null);
+        fitnessClass.setId(StringUtils.hasText(fitnessClassId) ? fitnessClassId : String.valueOf(UUID.randomUUID()));
+        fitnessClass.setStartTime(LocalDateTime.parse(dto.getStartTime()));
+        fitnessClass.setEndTime(LocalDateTime.parse(dto.getEndTime()));
+
+        if (StringUtils.hasText(dto.getCoachId())) {
+            Coach coach = coachRepository.findById(dto.getCoachId()).orElse(null);
             fitnessClass.setCoach(coach);
         } else {
             fitnessClass.setCoach(null);

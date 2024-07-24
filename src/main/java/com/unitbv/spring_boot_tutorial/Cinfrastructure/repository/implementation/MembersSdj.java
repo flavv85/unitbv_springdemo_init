@@ -15,6 +15,8 @@ import java.util.Optional;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class MembersSdj  implements Members {
     MemberRepository MemberRepository;
+    private final MemberRepository memberRepository;
+
     @Override
     public List<Member> getAllMembers() {
         return MemberRepository.findAll();
@@ -29,5 +31,10 @@ public class MembersSdj  implements Members {
     @Override
     public Optional<Member> getMemberById(String id) {
         return MemberRepository.findById(id);
+    }
+
+    @Override
+    public void DeleteMember(Member member) {
+        memberRepository.delete(member);
     }
 }

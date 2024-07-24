@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 public class ConsultFitnessClassDTO {
-    String id;
-    String coachID;
-    LocalDateTime startDate;
-    LocalDateTime endDate;
+    private String id;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private String coachName;
 
 }
