@@ -23,7 +23,7 @@ public class MemberMapperService {
         dto.setNickname(member.getNickname());
         return dto;
     }
-
+//
     public Member mapToEntity(CreateUpdateMemberDto dto, String id) {
         Member member = new Member();
         if (id != null) {
