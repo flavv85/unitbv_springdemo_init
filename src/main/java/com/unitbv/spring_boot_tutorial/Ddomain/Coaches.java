@@ -9,6 +9,5 @@ public interface Coaches {
     Optional<Coach> getCoachById(String coachId);
     List<Coach> getAllCoachesByName(String name);
     void deleteCoachNativeQuery(String coachId);
-
-    void delete(Coach coach);
+    void delete(String coachId);
 }
