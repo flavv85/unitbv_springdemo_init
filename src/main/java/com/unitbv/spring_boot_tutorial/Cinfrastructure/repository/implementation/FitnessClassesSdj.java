@@ -3,9 +3,7 @@ package com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementatio
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.FitnessClassRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FitnessClassesSdj implements FitnessClasses {
 
     FitnessClassRepository fitnessClassRepository;
@@ -27,8 +24,31 @@ public class FitnessClassesSdj implements FitnessClasses {
     public void createOrUpdate(FitnessClass fitnessClass) {
         fitnessClassRepository.save(fitnessClass);
     }
+
+    @Override
+    public List<FitnessClass> getAllFitnessClassesById(String fitnessClassId) {
+        return fitnessClassRepository.findAllByIdContaining(fitnessClassId);
+    }
+
+    @Override
+    public void deleteFitnessClassNativeQuery(String fitnessClassId) {
+        fitnessClassRepository.deleteFitnessClassById(fitnessClassId);
+
+    }
+
     public Optional<FitnessClass> getFitnessClassById(String id){
         return fitnessClassRepository.findById(id);
     }
+    public void deleteFitnessClassById(String fitnessClassId){
+        fitnessClassRepository.deleteFitnessClassById(fitnessClassId);
+    }
+    public void delete(FitnessClass fitnessClass){
+        fitnessClassRepository.delete(fitnessClass);
+    }
+    public boolean existsById(String id){
+        return fitnessClassRepository.existsById(id);
+    }
+
+
 
 }

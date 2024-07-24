@@ -55,8 +55,8 @@ public class CoachMapperService {
                         .builder()
                         .id(UUID.randomUUID().toString())
                         .coach(coach)
-                        .startTime(ObjectUtils.isEmpty(fitnessClass.getStartTime()) ? null : LocalDateTime.parse(fitnessClass.getStartTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")))
-                        .endTime(ObjectUtils.isEmpty(fitnessClass.getEndTime()) ? null : LocalDateTime.parse(fitnessClass.getEndTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")))
+                        .startTime(fitnessClass.getStartTime())
+                        .endTime(fitnessClass.getEndTime())
                         .build();
                 fitnessClasses.add(newFitnessClass);
             });

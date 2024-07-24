@@ -13,4 +13,5 @@ public interface CoachRepository extends JpaRepository<Coach, String> {
     @Modifying
     @Query(value = "DELETE FROM COACH WHERE COACH_ID = ?1", nativeQuery = true)
     void deleteCoachById(String coachId);
+    boolean existsById(String id);
 }

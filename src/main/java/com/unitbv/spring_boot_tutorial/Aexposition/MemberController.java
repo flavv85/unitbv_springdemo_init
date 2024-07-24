@@ -3,8 +3,7 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.member.ConsultAllMembers;
-import com.unitbv.spring_boot_tutorial.Bapplication.member.CreateMember;
+import com.unitbv.spring_boot_tutorial.Bapplication.member.*;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +20,11 @@ public class MemberController {
     ConsultAllMembers consultAllMembers;
     MemberMapperService memberMapperService;
     CreateMember createMember;
+    UpdateMember updateMember;
+    DeleteMember deleteMember;
+    ConsultMemberById consultMemberById;
+    ConsultAllMembersByName consultAllMembersByName;
+
 
     @GetMapping
     public ResponseEntity<List<ConsultMemberDto>> consultAll() {
@@ -46,4 +50,34 @@ public class MemberController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<ConsultMemberDto>> consultAllByName(@PathVariable String name) {
+        List<Member> memberList = consultAllMembersByName.consultByName(name);
+        List<ConsultMemberDto> consultMemberDtoList = memberList.stream().map(member -> memberMapperService.mapFromDomain(member)).toList();
+        return ResponseEntity.ok(consultMemberDtoList);
+    }
+
+    //update coach
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ConsultMemberDto> updateMember(
+            @PathVariable String id,
+            @RequestBody CreateUpdateMemberDto dto) {
+        Member toBeUpdatedMember = memberMapperService.mapToEntity(dto, id);
+        updateMember.update(toBeUpdatedMember);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // delete coach
+    @DeleteMapping(value = "/delete-by-id/{id}")
+    public ResponseEntity<Void> deleteMemberById(@PathVariable(value = "id") String id) {
+        deleteMember.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteMember(@PathVariable(value = "id") String id) {
+        deleteMember.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

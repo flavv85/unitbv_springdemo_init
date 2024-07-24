@@ -3,7 +3,6 @@ package com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementatio
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
-import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -30,6 +29,18 @@ public class CoachesSdj implements Coaches {
     }
     public Optional<Coach> getCoachById(String id){
         return coachRepository.findById(id);
+    }
+    public void deleteCoachNativeQuery(String coachId){
+        coachRepository.deleteCoachById(coachId);
+    }
+    public void delete(Coach coach){
+        coachRepository.delete(coach);
+    }
+    public List<Coach> getAllCoachesByName(String name){
+        return coachRepository.findAllByNameContaining(name);
+    }
+    public boolean existsById(String id){
+        return coachRepository.existsById(id);
     }
 
 }

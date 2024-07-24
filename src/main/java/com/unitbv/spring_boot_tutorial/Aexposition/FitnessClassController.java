@@ -1,9 +1,11 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.FitnessClassMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.ConsultAllFitnessClasses;
-import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.CreateFitnessClass;
+import com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass.*;
+import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,9 @@ public class FitnessClassController {
     FitnessClassMapperService fitnessClassMapperService;
     ConsultAllFitnessClasses consultAllFitnessClasses;
     CreateFitnessClass createFitnessClass;
+    DeleteFitnessClass deleteFitnessClass;
+    UpdateFitnessClass updateFitnessClass;
+    ConsultFitnessClassById consultFitnessClassById;
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateUpdateFitnessClassDto dto) {
@@ -44,4 +49,29 @@ public class FitnessClassController {
         List<ConsultFitnessClassDto> fitnessClassDtoList = fitnessClasses.stream().map(fitnessClassMapperService::mapFromDomain).toList();
         return new ResponseEntity<>(fitnessClassDtoList, HttpStatus.OK);
     }
+
+
+    //update fc
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ConsultCoachDto> updateFitnessClass(
+            @PathVariable String id,
+            @RequestBody CreateUpdateFitnessClassDto dto) {
+        FitnessClass toBeUpdatedFitnessClass = fitnessClassMapperService.mapToEntity(dto, id);
+        updateFitnessClass.update(toBeUpdatedFitnessClass);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // delete fc
+    @DeleteMapping(value = "/delete-by-id/{id}")
+    public ResponseEntity<Void> deleteFitnessClassById(@PathVariable(value = "id") String id) {
+        deleteFitnessClass.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteFitnessClass(@PathVariable(value = "id") String id) {
+        deleteFitnessClass.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

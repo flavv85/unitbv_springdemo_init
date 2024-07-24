@@ -7,4 +7,8 @@ public interface Members {
     List<Member> getAllMembers();
     void createOrUpdate(Member member);
     Optional<Member> getMemberById(String id);
+    List<Member> getAllMembersByName(String name);
+    void delete(Member member);
+    void deleteMemberNativeQuery(String memberId);
+    boolean existsById(String Id);
 }

@@ -4,11 +4,11 @@ import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultFitnessClassDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.CoachMapperService;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.ConsultAllCoaches;
-import com.unitbv.spring_boot_tutorial.Bapplication.coach.CreateCoach;
+import com.unitbv.spring_boot_tutorial.Bapplication.coach.*;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AllArgsConstructor;
+import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +24,10 @@ public class CoachController {
     ConsultAllCoaches consultAllCoaches;
     CoachMapperService coachMapperService;
     CreateCoach createCoach;
+    ConsultAllCoachesByName consultAllCoachesByName;
+    ConsultCoachById consultCoachById;
+    DeleteCoach deleteCoach;
+    UpdateCoach updateCoach;
 
     @GetMapping
     public ResponseEntity<List<ConsultCoachDto>> consultAll() {
@@ -49,6 +53,36 @@ public class CoachController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<ConsultCoachDto>> consultAllByName(@PathVariable String name) {
+        List<Coach> coachList = consultAllCoachesByName.consultByName(name);
+        List<ConsultCoachDto> consultCoachDtoList = coachList.stream().map(coach -> coachMapperService.mapFromDomain(coach)).toList();
+        return ResponseEntity.ok(consultCoachDtoList);
+    }
+
+    //update coach
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ConsultCoachDto> updateCoach(
+            @PathVariable String id,
+            @RequestBody CreateUpdateCoachDto dto) {
+        Coach toBeUpdatedCoach = coachMapperService.mapToEntity(dto, id);
+        updateCoach.update(toBeUpdatedCoach);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // delete coach
+    @DeleteMapping(value = "/delete-by-id/{id}")
+    public ResponseEntity<Void> deleteCoachById(@PathVariable(value = "id") String id) {
+        deleteCoach.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteCoach(@PathVariable(value = "id") String id) {
+        deleteCoach.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 
 }
