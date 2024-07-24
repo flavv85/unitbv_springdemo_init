@@ -45,7 +45,8 @@ public class CoachesSdj implements Coaches {
     }
 
     @Override
-    public void delete(Coach coach) {
-        coachRepository.delete(coach);
+    public void delete(String coachId) {
+        coachRepository.deleteById(coachId);
     }
+
 }
