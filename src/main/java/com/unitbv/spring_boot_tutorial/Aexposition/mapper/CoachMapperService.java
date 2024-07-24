@@ -1,8 +1,8 @@
 package com.unitbv.spring_boot_tutorial.Aexposition.mapper;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClassCoachDetailsDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.ConsultCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.CreateUpdateCoachDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.FitnessClassCoachDetailsDto;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import lombok.AccessLevel;

@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Aexposition.dto;
+package com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

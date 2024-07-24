@@ -1,5 +1,6 @@
-package com.unitbv.spring_boot_tutorial.Aexposition.dto;
+package com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach;
 
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdateFitnessClassDto;
 import lombok.*;
 
 import java.util.List;
