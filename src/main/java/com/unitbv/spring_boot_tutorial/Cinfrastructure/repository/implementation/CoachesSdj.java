@@ -7,8 +7,10 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -25,5 +27,25 @@ public class CoachesSdj implements Coaches {
     @Override
     public void createOrUpdate(Coach coach) {
         coachRepository.save(coach);
+    }
+
+    @Override
+    public Optional<Coach> getCoachById(String coachId) {
+        return ObjectUtils.isEmpty(coachId) ? Optional.empty() : coachRepository.findById(coachId);
+    }
+
+    @Override
+    public List<Coach> getAllCoachesByName(String name) {
+        return coachRepository.findAllByNameContaining(name);
+    }
+
+    @Override
+    public void deleteCoachNativeQuery(String coachId) {
+        coachRepository.deleteCoachById(coachId);
+    }
+
+    @Override
+    public void delete(Coach coach) {
+        coachRepository.delete(coach);
     }
 }

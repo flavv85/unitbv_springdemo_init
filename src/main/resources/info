@@ -1,0 +1,122 @@
+testing with postman
+GET all: http://localhost:8080/api/coach
+return:
+[
+    {
+        "id": "1dcae24c-d454-4769-8966-06d8722a6e4d",
+        "name": "andrei new",
+        "fitnessClasses": [
+            {
+                "id": "6e0045e2-50e0-43f5-97ca-28d32a60ce6f",
+                "duration": "3 hours"
+            },
+            {
+                "id": "e73e1185-724a-425d-8a7a-4e8e2acd6af7",
+                "duration": "3 hours"
+            },
+            {
+                "id": "c0720155-e96c-4579-915c-a49029d4d13c",
+                "duration": "3 hours"
+            }
+        ]
+    },
+    {
+        "id": "1222c4d0-d27a-4591-9140-c2b1dce6bb90",
+        "name": "Andrei2",
+        "fitnessClasses": [
+            {
+                "id": "0e6bfacf-8277-4491-b602-980dce9c7c47",
+                "duration": "3 hours"
+            },
+            {
+                "id": "210e5461-f76d-49bd-be6a-567fb8abfdf0",
+                "duration": "2 hours"
+            },
+            {
+                "id": "e761a489-39a9-47fb-9940-c7f326ac4d83",
+                "duration": "1 hour"
+            }
+        ]
+    }
+]
+
+GET all by name (case sensitive): http://localhost:8080/api/coach/name/{search_string}
+return where search string is "ndr":
+
+[
+    {
+        "id": "1dcae24c-d454-4769-8966-06d8722a6e4d",
+        "name": "andrei new",
+        "fitnessClasses": [
+            {
+                "id": "6e0045e2-50e0-43f5-97ca-28d32a60ce6f",
+                "duration": "3 hours"
+            },
+            {
+                "id": "e73e1185-724a-425d-8a7a-4e8e2acd6af7",
+                "duration": "3 hours"
+            },
+            {
+                "id": "c0720155-e96c-4579-915c-a49029d4d13c",
+                "duration": "3 hours"
+            }
+        ]
+    },
+    {
+        "id": "1222c4d0-d27a-4591-9140-c2b1dce6bb90",
+        "name": "Andrei2",
+        "fitnessClasses": [
+            {
+                "id": "0e6bfacf-8277-4491-b602-980dce9c7c47",
+                "duration": "3 hours"
+            },
+            {
+                "id": "210e5461-f76d-49bd-be6a-567fb8abfdf0",
+                "duration": "2 hours"
+            },
+            {
+                "id": "e761a489-39a9-47fb-9940-c7f326ac4d83",
+                "duration": "1 hour"
+            }
+        ]
+    }
+]
+
+
+DELETE by id: http://localhost:8080/api/coach/{coach_id}
+DELETE by id(native query method): http://localhost:8080/api/coach/delete-by-id/{coach_id}
+PUT: http://localhost:8080/api/coach/{coach_id to be updated}
+    @RequestBody json example to add or change fitness classes:
+    {
+        "name":"Coach1"  ,
+        "fitnessClasses": [
+            {"startTime": "2024-07-27T13:00",
+            "endTime": "2024-07-27T16:00"},
+            {"startTime": "2024-08-27T13:00",
+            "endTime": "2024-08-27T16:00"},
+            {"startTime": "2024-06-27T13:00",
+            "endTime": "2024-06-27T16:00"}
+        ]
+    }
+     @RequestBody json example to remove fitness classes:
+        {
+            "name":"Coach1"
+        }
+
+POST: http://localhost:8080/api/coach
+    @RequestBody json example to add fitness classes when creating a new coach:
+    {
+        "name":"Andrei2",
+        "fitnessClasses": [
+            {"startTime": "2024-07-27T13:00",
+            "endTime": "2024-07-27T16:00"},
+            {"startTime": "2024-08-27T14:00",
+            "endTime": "2024-08-27T16:00"},
+            {"startTime": "2024-06-27T15:00",
+            "endTime": "2024-06-27T16:00"}
+        ]
+    }
+    @RequestBody json example to add a new coach without fitness classes:
+    {
+        "name":"Andrei2"
+    }

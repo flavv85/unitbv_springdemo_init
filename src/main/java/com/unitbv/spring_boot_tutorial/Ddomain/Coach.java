@@ -2,6 +2,10 @@ package com.unitbv.spring_boot_tutorial.Ddomain;
 
 import jakarta.persistence.*;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+>>>>>>> refs/heads/main
 import java.util.List;
 
 @Entity
@@ -13,9 +17,22 @@ public class Coach {
     @Column(name = "name")
     private String name;
 
+<<<<<<< HEAD
     @OneToMany
     @JoinColumn(name = "fitness_class_id")
     private List<FitnessClass> fitnessClasses;
+=======
+    @OneToMany(mappedBy = "coach", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FitnessClass> fitnessClasses = new ArrayList<>();
+
+    public List<FitnessClass> getFitnessClasses() {
+        return fitnessClasses;
+    }
+
+    public void setFitnessClasses(List<FitnessClass> fitnessClasses) {
+        this.fitnessClasses = fitnessClasses;
+    }
+>>>>>>> refs/heads/main
 
     public String getId() {
         return id;
@@ -49,4 +66,18 @@ public class Coach {
         this.name = name;
     }
 
+<<<<<<< HEAD
+=======
+    // specific methods for bidirectional @OneToMany and @ManyToOne relations
+    // for adding and deleting children (fitness classes) from parent entity (coach)
+        public void addFitnessClass(FitnessClass fitnessClass) {
+        fitnessClasses.add(fitnessClass);
+        fitnessClass.setCoach(this);
+    }
+
+    public void removeFitnessClass(FitnessClass fitnessClass) {
+        fitnessClasses.remove(fitnessClass);
+        fitnessClass.setCoach(null);
+    }
+>>>>>>> refs/heads/main
 }

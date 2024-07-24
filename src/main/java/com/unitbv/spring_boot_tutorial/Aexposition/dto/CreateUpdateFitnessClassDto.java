@@ -2,6 +2,7 @@ package com.unitbv.spring_boot_tutorial.Aexposition.dto;
 
 import lombok.*;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 
 @Getter
@@ -27,4 +28,15 @@ public class CreateUpdateFitnessClassDto {
     public LocalDateTime getEndTime() {
         return endTime;
     }
+=======
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
+public class CreateUpdateFitnessClassDto {
+    String startTime;
+    String endTime;
+    String coachId;
+>>>>>>> refs/heads/main
 }

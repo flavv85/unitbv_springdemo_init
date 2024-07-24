@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateUpdateCoachDto {
     public String name;
+<<<<<<< HEAD
 
     public String getName() {
         return name;
@@ -22,4 +23,7 @@ public class CreateUpdateCoachDto {
     public List<CreateUpdateFitnessClassDto> getFitnessClasses() {
         return fitnessClasses;
     }
+=======
+    public List<CreateUpdateFitnessClassDto> fitnessClasses;
+>>>>>>> refs/heads/main
 }
