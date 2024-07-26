@@ -47,7 +47,7 @@ public class FitnessClassController {
     @GetMapping("/{id}")
     public ResponseEntity<ConsultFitnessClassDto> getFitnessClassById(@PathVariable String id)
     {
-        Optional<FitnessClass> fitnessClass = fitnessClassService.getMemberById(id);
+        Optional<FitnessClass> fitnessClass = fitnessClassService.getFitnessClassById(id);
         ConsultFitnessClassDto consultFitnessClassDto = fitnessClassMapper.mapFromDomain(fitnessClass.get());
         return new ResponseEntity<>(consultFitnessClassDto, HttpStatus.OK);
     }

@@ -8,4 +8,5 @@ public interface FitnessClasses {
     Optional<FitnessClass> getFitnessClassById(String id);
     void createOrUpdate(FitnessClass fitnessClass);
     void delete(FitnessClass fitnessClass);
+
 }

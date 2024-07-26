@@ -1,12 +1,11 @@
 package com.unitbv.spring_boot_tutorial.Aexposition;
 
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.ConsultCoachDto;
-import com.unitbv.spring_boot_tutorial.Aexposition.dto.Coach.CreateUpdateCoachDto;
+
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.member.*;
-import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
+import com.unitbv.spring_boot_tutorial.Bapplication.member.ConsultAllMembersByFitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -33,6 +33,8 @@ public class MemberController {
     UpdateMember updateMember;
 
     DeleteMember deleteMember;
+    ConsultAllMembersByFitnessClass consultAllMembersByFitnessClass;
+    UpdateNickname updateNickname;
 
     @GetMapping
     public ResponseEntity<List<ConsultMemberDto>> consultAll()
@@ -72,5 +74,19 @@ public class MemberController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/fitnessclass/{fitnessClassId}")
+    public ResponseEntity<List<ConsultMemberDto>> getAllMembersFromFitnessClass(@PathVariable String fitnessClassId)
+    {
+        Set<Member> members = consultAllMembersByFitnessClass.consultAllByFitnessClass(fitnessClassId);
+        List<ConsultMemberDto> memberDtos = members.stream().map(member -> memberMapperService.mapFromDomain(member)).toList();
+        return new ResponseEntity<>(memberDtos, HttpStatus.OK);
+    }
+
+    @PutMapping("/nickname/{memberId}")
+    public ResponseEntity<Void> updateNickname(@PathVariable String memberId, @RequestBody String nickname)
+    {
+        updateNickname.updateNickname(memberId, nickname);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

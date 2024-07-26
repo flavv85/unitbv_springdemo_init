@@ -1,5 +1,7 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.member;
+package com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass;
 
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import lombok.AccessLevel;
@@ -11,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UpdateMember {
+public class UpdateFitnessClass {
 
     @Autowired
-    Members members;
+    FitnessClasses fitnessClasses;
 
-    public void update(Member member) {
-        members.createOrUpdate(member);
+    public void update(FitnessClass fitnessClass) {
+        fitnessClasses.createOrUpdate(fitnessClass);
     }
 
 }

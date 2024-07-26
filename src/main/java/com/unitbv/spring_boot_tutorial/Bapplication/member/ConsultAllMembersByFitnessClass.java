@@ -1,25 +1,29 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.fitnessClass;
+package com.unitbv.spring_boot_tutorial.Bapplication.member;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class FitnessClassService {
+public class ConsultAllMembersByFitnessClass {
+    Members members;
     FitnessClasses fitnessClasses;
 
-    public Optional<FitnessClass> getFitnessClassById(String id)
+    public Set<Member> consultAllByFitnessClass(String fitnessClassId)
     {
-        return fitnessClasses.getFitnessClassById(id);
+        FitnessClass fitnessClass = fitnessClasses.getFitnessClassById(fitnessClassId).orElseThrow();
+        return fitnessClass.getMembers();
+
     }
 
 }

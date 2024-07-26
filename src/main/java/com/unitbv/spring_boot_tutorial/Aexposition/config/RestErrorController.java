@@ -19,7 +19,7 @@ public class RestErrorController extends ResponseEntityExceptionHandler {
     @ExceptionHandler()
     public ResponseEntity<CustomErrorMessage> handleUnknownObjectException(UnknownObjectException exception) {
         CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
-                .title("Unknown Object Exception")
+                .title("Exceptia mea")
                 .details(exception.getMessage())
                 .status(HttpStatus.BAD_REQUEST)
                 .build();

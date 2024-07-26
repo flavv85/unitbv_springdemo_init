@@ -1,7 +1,9 @@
 package com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.implementation;
 
+import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.FitnessClassRepository;
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.MemberRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import lombok.AccessLevel;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class MembersSdj implements Members{
 
     MemberRepository memberRepository;
+    FitnessClassRepository fitnessClassRepository;
 
     public List<Member> getAllMembers()
     {
@@ -34,5 +37,6 @@ public class MembersSdj implements Members{
     }
 
     public void delete(Member member){memberRepository.delete(member);}
+
 
 }
