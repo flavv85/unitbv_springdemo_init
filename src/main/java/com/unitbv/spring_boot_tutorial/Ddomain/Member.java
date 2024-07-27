@@ -27,4 +27,13 @@ public class Member {
 
     @Column(name = "member_nickname")
     String nickname;
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                '}';
+    }
 }

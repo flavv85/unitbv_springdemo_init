@@ -9,5 +9,5 @@ import lombok.*;
 @NoArgsConstructor
 public class CreateUpdateMemberDTO {
     public String name;
-    public String nickName;
+    public String nickname;
 }

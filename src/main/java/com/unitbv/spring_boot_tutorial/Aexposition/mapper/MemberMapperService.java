@@ -2,7 +2,6 @@ package com.unitbv.spring_boot_tutorial.Aexposition.mapper;
 
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMembersDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDTO;
-import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,7 +27,7 @@ public class MemberMapperService {
         Member member = new Member();
         member.setId(StringUtils.hasText(memberID) ? memberID : String.valueOf(UUID.randomUUID()));
         member.setName(dto.getName());
-        member.setNickname(dto.getNickName());
+        member.setNickname(dto.getNickname());
         return member;
     }
 }
