@@ -3,8 +3,9 @@ package com.unitbv.spring_boot_tutorial.Aexposition;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.ConsultMembersDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMemberDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
+import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.ConsultFitnessClassesByID;
 import com.unitbv.spring_boot_tutorial.Bapplication.Member.*;
-import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.MemberRepository;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,19 +14,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/member")
 public class MemberController {
-
-    private final MemberRepository memberRepository;
     ConsultAllMembers consultAllMembers;
     MemberMapperService memberMapperService;
     ConsultMembersById consultMembersById;
     CreateMember createMember;
     UpdateMember updateMember;
     DeleteMember deleteMember;
+    ConsultAllMembersFromFitnessClass consultAllMembersFromFitnessClass;
+    ConsultFitnessClassesByID consultFitnessClassesByID;
 
 
     @GetMapping
@@ -51,6 +53,17 @@ public class MemberController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping("/member-from-fitness-class/{id}")
+    public ResponseEntity<List<ConsultMembersDTO>> getAllFromFitnessClass(@PathVariable String id ){
+        Optional<FitnessClass> fitnessClass=consultFitnessClassesByID.ConsultById(id);
+        if (fitnessClass.isPresent()) {
+            Optional<Set<Member>> members=consultAllMembersFromFitnessClass.ConsutlAll(fitnessClass.get());
+            List<ConsultMembersDTO> membersDTO=members.get().stream().toList().stream().map(memberMapperService::mapFromDomain).toList();
+            return new ResponseEntity<>(membersDTO, HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping(value = "/delete-by-id/{id}")
