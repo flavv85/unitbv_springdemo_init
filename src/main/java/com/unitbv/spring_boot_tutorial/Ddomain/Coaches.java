@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public interface Coaches {
     List<Coach> getAllCoaches();
-
     void createOrUpdate(Coach coach);
-
-    //TODO de facut o metoda care verifica daca exista un obiect de tip Coach in db dupa id
-    Optional<Coach> getById(String id);
+    Optional<Coach> getCoachById(String coachId);
+    List<Coach> getAllCoachesByName(String name);
+    void deleteCoachNativeQuery(String coachId);
+    void delete(String coachId);
 }
