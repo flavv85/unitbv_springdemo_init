@@ -16,10 +16,12 @@ public class Review {
     @Id
     @Column(name="review_id")
     String id;
-    @Column(name="coach_id")
-    String coach_id;
-    @Column(name="member_id")
-    String member_id;
+    @OneToOne
+    @JoinColumn(name="coach_id")
+    Coach coach;
+    @OneToOne
+    @JoinColumn(name="member_id")
+    Member member;
     @Column(name="mark")
     int mark;
 
