@@ -15,6 +15,7 @@ CREATE TABLE FITNESS_CLASS
 (
     coach_id VARCHAR(36) NOT NULL,
     fitness_class_id VARCHAR(36) NOT NULL,
+    fitness_class_name VARCHAR(36) NOT NULL,
     start_time TIMESTAMP,
     end_time TIMESTAMP,
     PRIMARY KEY (fitness_class_id)

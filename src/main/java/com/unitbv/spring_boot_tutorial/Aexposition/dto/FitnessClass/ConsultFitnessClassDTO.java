@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 public class ConsultFitnessClassDTO {
     private String id;
+    private String name;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String coachName;

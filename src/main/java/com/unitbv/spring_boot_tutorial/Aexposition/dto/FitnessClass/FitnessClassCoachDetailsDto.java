@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class FitnessClassCoachDetailsDto {
 
+    String name;
     String id;
     String duration;
 

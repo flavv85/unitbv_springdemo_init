@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CreateUpdateFitnessClassDto {
+    String name;
     String startTime;
     String endTime;
     String coachId;

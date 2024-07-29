@@ -37,6 +37,7 @@ public class CoachMapperService {
     private FitnessClassCoachDetailsDto mapFitnessClassFromDomain(FitnessClass fitnessClass) {
         FitnessClassCoachDetailsDto fitnessClassCoachDetailsDto = new FitnessClassCoachDetailsDto();
         fitnessClassCoachDetailsDto.setId(fitnessClass.getId());
+        fitnessClassCoachDetailsDto.setName(fitnessClass.getName());
         fitnessClassCoachDetailsDto.setDuration(fitnessClassCoachDetailsDto.appendHourToDuration(String.valueOf(fitnessClass.duration())));
         return fitnessClassCoachDetailsDto;
     }

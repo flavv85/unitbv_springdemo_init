@@ -30,6 +30,7 @@ public class FitnessClassMapperService {
         return ConsultFitnessClassDTO.builder()
                 .coachName(fitnessClass.getCoach().getName())
                 .members(members)
+                .name(fitnessClass.getName())
                 .id(fitnessClass.getId())
                 .startTime(fitnessClass.getStartTime())
                 .endTime(fitnessClass.getEndTime())
@@ -41,6 +42,7 @@ public class FitnessClassMapperService {
         fitnessClass.setId(StringUtils.hasText(fitnessClassId) ? fitnessClassId : String.valueOf(UUID.randomUUID()));
         fitnessClass.setStartTime(LocalDateTime.parse(dto.getStartTime()));
         fitnessClass.setEndTime(LocalDateTime.parse(dto.getEndTime()));
+        fitnessClass.setName(dto.getName());
 
         if (StringUtils.hasText(dto.getCoachId())) {
             Coach coach = coachRepository.findById(dto.getCoachId()).orElse(null);
