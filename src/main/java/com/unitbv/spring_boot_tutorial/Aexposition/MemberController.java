@@ -5,7 +5,7 @@ import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMember
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.ConsultFitnessClassesByID;
 import com.unitbv.spring_boot_tutorial.Bapplication.Member.*;
-import com.unitbv.spring_boot_tutorial.Bapplication.Review.DeleteMembers;
+import com.unitbv.spring_boot_tutorial.Bapplication.Member.DeleteMembers;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;

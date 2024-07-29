@@ -1,4 +1,4 @@
-package com.unitbv.spring_boot_tutorial.Bapplication.Review;
+package com.unitbv.spring_boot_tutorial.Bapplication.Member;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.Members;
 import jakarta.transaction.Transactional;
