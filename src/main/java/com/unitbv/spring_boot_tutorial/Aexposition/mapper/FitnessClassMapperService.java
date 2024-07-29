@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -21,12 +23,17 @@ public class FitnessClassMapperService {
     CoachRepository coachRepository;
 
     public ConsultFitnessClassDTO mapFromDomain(FitnessClass fitnessClass) {
-        return new ConsultFitnessClassDTO(
-                fitnessClass.getId(),
-                fitnessClass.getStartTime(),
-                fitnessClass.getEndTime(),
-                fitnessClass.getCoach() != null ? fitnessClass.getCoach().getName() : null
-        );
+        Set<String> members = new HashSet<>();
+        for(var member:fitnessClass.getMembers()) {
+            members.add(member.getNickname());
+        }
+        return ConsultFitnessClassDTO.builder()
+                .coachName(fitnessClass.getCoach().getName())
+                .members(members)
+                .id(fitnessClass.getId())
+                .startTime(fitnessClass.getStartTime())
+                .endTime(fitnessClass.getEndTime())
+                .build();
     }
 
     public FitnessClass mapToEntity(CreateUpdateFitnessClassDto dto, String fitnessClassId) {
