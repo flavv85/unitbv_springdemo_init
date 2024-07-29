@@ -30,3 +30,13 @@ VALUES ('b7b57d69-d9d0-43bf-a30e-39f682853269', SELECT member_id from member whe
 
 INSERT INTO fitness_classes_members(fitness_class_id, member_id)
 VALUES ('b7b57d69-d9d0-43bf-a30e-39f682853269', SELECT member_id from member where member_nickname = 'Saw');
+
+INSERT INTO review(review_id,coach_id,member_id,mark)
+VALUES (UUID(),SELECT coach_id from coach where name='Coach1',SELECT member_id from member where member_name='John Ranger',8);
+
+INSERT INTO review(review_id,coach_id,member_id,mark)
+VALUES (UUID(),SELECT coach_id from coach where name='Coach1',SELECT member_id from member where member_name='Eddy Norman',7);
+
+INSERT INTO review(review_id,coach_id,member_id,mark)
+VALUES (UUID(),SELECT coach_id from coach where name='Coach2',SELECT member_id from member where member_name='Selena Andrews',8);
+

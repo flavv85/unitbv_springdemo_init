@@ -26,3 +26,11 @@ CREATE TABLE FITNESS_CLASSES_MEMBERS
     fitness_class_id VARCHAR(36) NOT NULL,
     member_id VARCHAR(36) NOT NULL
 );
+
+CREATE TABLE REVIEW
+(
+    review_id VARCHAR(36) NOT NULL,
+    coach_id VARCHAR(36) NOT NULL,
+    member_id VARCHAR(36) NOT NULL,
+    mark integer NOT NULL
+)
