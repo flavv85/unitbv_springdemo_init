@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -24,6 +25,11 @@ public class FitnessClassMapperService {
 
     public ConsultFitnessClassDTO mapFromDomain(FitnessClass fitnessClass) {
         Set<String> members = new HashSet<>();
+        LocalDateTime startTime=fitnessClass.getStartTime();
+        LocalDateTime endTime=fitnessClass.getEndTime();
+        DateTimeFormatter format= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String startTimeFormat=startTime.format(format);
+        String endTimeFormat=endTime.format(format);
         for(var member:fitnessClass.getMembers()) {
             members.add(member.getNickname());
         }
@@ -32,8 +38,8 @@ public class FitnessClassMapperService {
                 .members(members)
                 .name(fitnessClass.getName())
                 .id(fitnessClass.getId())
-                .startTime(fitnessClass.getStartTime())
-                .endTime(fitnessClass.getEndTime())
+                .startTime(startTimeFormat)
+                .endTime(endTimeFormat)
                 .build();
     }
 
@@ -43,6 +49,7 @@ public class FitnessClassMapperService {
         fitnessClass.setStartTime(LocalDateTime.parse(dto.getStartTime()));
         fitnessClass.setEndTime(LocalDateTime.parse(dto.getEndTime()));
         fitnessClass.setName(dto.getName());
+        fitnessClass.setMembers(dto.getMembers());
 
         if (StringUtils.hasText(dto.getCoachId())) {
             Coach coach = coachRepository.findById(dto.getCoachId()).orElse(null);

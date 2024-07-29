@@ -14,8 +14,8 @@ import java.util.Set;
 public class ConsultFitnessClassDTO {
     private String id;
     private String name;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String startTime;
+    private String endTime;
     private String coachName;
     private Set<String> members;
 

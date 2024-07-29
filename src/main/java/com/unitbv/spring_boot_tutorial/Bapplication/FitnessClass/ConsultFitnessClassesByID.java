@@ -1,6 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClassValidations;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,8 @@ public class ConsultFitnessClassesByID {
 
     public Optional<FitnessClass> ConsultById(String id)
     {
-        return fitnessClasses.getFitnessClassById(id);
+        Optional<FitnessClass> fitnessClass= fitnessClasses.getFitnessClassById(id);
+        FitnessClassValidations.CheckMembersNumberForOneFitnessClass(fitnessClass.get());
+        return fitnessClass;
     }
 }

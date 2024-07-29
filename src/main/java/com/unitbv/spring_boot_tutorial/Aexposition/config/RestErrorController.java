@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Aexposition.config;
 
+import com.unitbv.spring_boot_tutorial.Ddomain.exceptions.UnknownFitnessClassException;
 import com.unitbv.spring_boot_tutorial.Ddomain.exceptions.UnknownMemberException;
 import com.unitbv.spring_boot_tutorial.Ddomain.exceptions.UnknownObjectException;
 import lombok.AccessLevel;
@@ -32,6 +33,19 @@ public class RestErrorController extends ResponseEntityExceptionHandler {
     }
     @ExceptionHandler
     public ResponseEntity<CustomErrorMessage> handleUnknownObjectException(UnknownMemberException exception) {
+        CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
+                .title("Unknown Member Exception")
+                .details(exception.getMessage())
+                .status(HttpStatus.BAD_REQUEST)
+                .build();
+
+        return ResponseEntity
+                .status(customErrorMessage.getStatus())
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(customErrorMessage);
+    }
+    @ExceptionHandler
+    public ResponseEntity<CustomErrorMessage> handleUnknownObjectException(UnknownFitnessClassException exception) {
         CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
                 .title("Unknown Member Exception")
                 .details(exception.getMessage())
