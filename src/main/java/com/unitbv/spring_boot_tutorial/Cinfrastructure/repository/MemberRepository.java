@@ -11,7 +11,7 @@ import java.util.List;
 public interface MemberRepository extends JpaRepository<Member, String> {
     List<Member> findAllByNameContaining(String name);
     @Modifying
-    @Query(value = "DELETE FROM MEMBER WHERE MEMBER_ID = ?1", nativeQuery = true)
+    @Query(value = "DELETE FROM MEMBER WHERE ID = ?1", nativeQuery = true)
     void deleteMemberById(String memberId);
     boolean existsById(String id);
 

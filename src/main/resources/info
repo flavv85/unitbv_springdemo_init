@@ -120,3 +120,10 @@ POST: http://localhost:8080/api/coach
     {
         "name":"Andrei2"
     }
+
+    Put Payload for fitness class creation
+    {
+      "coachId": "5636247f-f718-478b-8814-2517165ff94e",
+      "startTime": "2024-06-27T15:00:00",
+      "endTime": "2024-06-27T17:00:00"
+    }

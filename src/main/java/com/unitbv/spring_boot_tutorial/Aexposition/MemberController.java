@@ -35,7 +35,7 @@ public class MemberController {
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateUpdateMemberDto dto) {
-        Member toBePersistedMember = (Member) memberMapperService.mapToEntity(dto, null);
+        Member toBePersistedMember = memberMapperService.mapToEntity(dto, null);
         createMember.create(toBePersistedMember);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -57,7 +57,6 @@ public class MemberController {
         return ResponseEntity.ok(consultMemberDtoList);
     }
 
-    //update coach
     @PutMapping(value = "/{id}")
     public ResponseEntity<ConsultMemberDto> updateMember(
             @PathVariable String id,
@@ -67,7 +66,6 @@ public class MemberController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // delete coach
     @DeleteMapping(value = "/delete-by-id/{id}")
     public ResponseEntity<Void> deleteMemberById(@PathVariable(value = "id") String id) {
         deleteMember.deleteById(id);

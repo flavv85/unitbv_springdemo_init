@@ -53,7 +53,7 @@ public class FitnessClassController {
 
     //update fc
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ConsultCoachDto> updateFitnessClass(
+    public ResponseEntity<ConsultFitnessClassDto> updateFitnessClass(
             @PathVariable String id,
             @RequestBody CreateUpdateFitnessClassDto dto) {
         FitnessClass toBeUpdatedFitnessClass = fitnessClassMapperService.mapToEntity(dto, id);

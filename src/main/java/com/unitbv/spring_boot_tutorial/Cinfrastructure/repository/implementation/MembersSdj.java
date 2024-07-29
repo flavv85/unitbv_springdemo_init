@@ -29,7 +29,7 @@ public class MembersSdj implements Members {
     public Optional<Member> getMemberById(String id){
         return memberRepository.findById(id);
     }
-    public List<Member> getAllMembersByName(String name){
+    public List<Member>     getAllMembersByName(String name){
         return memberRepository.findAllByNameContaining(name);
     }
     public void deleteMemberNativeQuery(String memberId){

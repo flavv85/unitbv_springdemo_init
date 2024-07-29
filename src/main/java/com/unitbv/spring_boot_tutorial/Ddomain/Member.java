@@ -19,12 +19,12 @@ import lombok.experimental.FieldDefaults;
 public class Member {
 
     @Id
-    @Column(name = "member_id")
+    @Column(name = "id", nullable = false, unique = true)
     String id;
 
-    @Column(name = "member_name")
+    @Column(name = "name")
     String name;
 
-    @Column(name = "member_nickname")
+    @Column(name = "nickname")
     String nickname;
 }

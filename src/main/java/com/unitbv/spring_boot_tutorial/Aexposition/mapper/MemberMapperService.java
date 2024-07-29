@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Aexposition.mapper;
 
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultCoachDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.ConsultMemberDto;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.CreateUpdateMemberDto;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
@@ -16,19 +17,18 @@ import java.util.UUID;
 @Service
 public class MemberMapperService {
 
-    public ConsultMemberDto mapFromDomain(Member member) {
-        ConsultMemberDto dto = new ConsultMemberDto();
-        dto.setId(member.getId());
-        dto.setName(member.getName());
-        dto.setNickname(member.getNickname());
-        return dto;
+    public ConsultMemberDto mapFromDomain(Member member){
+        return ConsultMemberDto
+                .builder()
+                .id(member.getId())
+                .name(member.getName())
+                .nickname(member.getNickname())
+                .build();
+
     }
-//
     public Member mapToEntity(CreateUpdateMemberDto dto, String id) {
         Member member = new Member();
-        if (id != null) {
-            member.setId(id);
-        }
+        member.setId(StringUtils.hasText(id) ? id : String.valueOf(UUID.randomUUID()));
         member.setName(dto.getName());
         member.setNickname(dto.getNickname());
         return member;

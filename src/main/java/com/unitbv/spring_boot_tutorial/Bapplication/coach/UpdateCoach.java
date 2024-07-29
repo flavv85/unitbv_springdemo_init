@@ -18,7 +18,7 @@ public class UpdateCoach {
 
     public void update(Coach coach) {
         if (coach.getId() == null || !coaches.existsById(coach.getId())) {
-            throw new IllegalArgumentException("Fitness class ID does not exist");
+            throw new IllegalArgumentException("Coach ID does not exist");
         }
         coaches.createOrUpdate(coach);
     }
