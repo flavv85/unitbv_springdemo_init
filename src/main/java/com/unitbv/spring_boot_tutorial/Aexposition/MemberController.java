@@ -5,6 +5,7 @@ import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.CreateUpdateMember
 import com.unitbv.spring_boot_tutorial.Aexposition.mapper.MemberMapperService;
 import com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass.ConsultFitnessClassesByID;
 import com.unitbv.spring_boot_tutorial.Bapplication.Member.*;
+import com.unitbv.spring_boot_tutorial.Bapplication.Review.DeleteMembers;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.Member;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class MemberController {
     DeleteMember deleteMember;
     ConsultAllMembersFromFitnessClass consultAllMembersFromFitnessClass;
     ConsultFitnessClassesByID consultFitnessClassesByID;
+    DeleteMembers deleteMembers;
 
 
     @GetMapping
@@ -76,6 +78,13 @@ public class MemberController {
     public ResponseEntity<Void> update(@PathVariable(value = "id") String id, @RequestBody CreateUpdateMemberDTO dto) {
         Member toBePersistedMember = (Member) memberMapperService.mapToEntity(dto, id);
         updateMember.Update(toBePersistedMember);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/delete_members")
+    public ResponseEntity<Void> deleteMembers()
+    {
+        deleteMembers.DeleteMembers();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

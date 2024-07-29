@@ -10,4 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
+    @Modifying
+    @Query(value= "DELETE FROM member where member_status is null",nativeQuery = true)
+    void deleteAllMembers();
+    @Modifying
+    @Query(value= "UPDATE member set member_status='INACTIVE' where member_status='ACTIVE'",nativeQuery = true)
+    void updateMemberStatus();
 }

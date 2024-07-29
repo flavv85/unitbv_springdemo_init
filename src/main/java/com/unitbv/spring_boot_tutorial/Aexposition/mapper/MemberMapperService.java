@@ -16,11 +16,13 @@ import java.util.UUID;
 @Service
 public class MemberMapperService {
     public ConsultMembersDTO mapFromDomain(Member member) {
+        String status=member.getStatus()!=null?member.getStatus().toString():null;
         return  ConsultMembersDTO
                 .builder()
                 .id(member.getId())
                 .name(member.getName())
                 .nickname(member.getNickname())
+                .status(status)
                 .build();
     }
     public Member mapToEntity(CreateUpdateMemberDTO dto, String memberID) {

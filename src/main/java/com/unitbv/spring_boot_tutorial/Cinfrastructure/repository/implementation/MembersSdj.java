@@ -48,4 +48,10 @@ public class MembersSdj  implements Members {
 
     }
 
+    @Override
+    public void deleteMembers() {
+        memberRepository.deleteAllMembers();
+        memberRepository.updateMemberStatus();
+    }
+
 }

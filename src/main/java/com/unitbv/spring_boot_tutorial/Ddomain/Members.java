@@ -9,4 +9,5 @@ public interface Members {
     Optional<Member> getMemberById(String id);
     void DeleteMember(Member member);
     Optional<Set<Member>> GetMembersByFitnessClass(FitnessClass fitnessClass);
+    void deleteMembers();
 }

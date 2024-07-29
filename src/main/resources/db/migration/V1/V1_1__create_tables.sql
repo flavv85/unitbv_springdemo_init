@@ -2,7 +2,9 @@ CREATE TABLE MEMBER
 (
     member_id VARCHAR(36) NOT NULL PRIMARY KEY,
     member_name VARCHAR(36) NOT NULL,
-    member_nickname VARCHAR(36) NOT NULL
+    member_nickname VARCHAR(36) NOT NULL,
+    member_status VARCHAR(36),
+    check(member_status in('ACTIVE','INACTIVE'))
 );
 
 CREATE TABLE COACH

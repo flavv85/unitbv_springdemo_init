@@ -1,9 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Ddomain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -28,6 +25,9 @@ public class Member {
     @Column(name = "member_nickname")
     String nickname;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name="member_status")
+    MemberStatus status;
     @Override
     public String toString() {
         return "Member{" +

@@ -1,7 +1,7 @@
-INSERT INTO member(member_id, member_name, member_nickname)
-VALUES (UUID(), 'John Ranger', 'JohnnyR');
-INSERT INTO member(member_id, member_name, member_nickname)
-VALUES (UUID(), 'Eddy Norman', 'Norm');
+INSERT INTO member(member_id, member_name, member_nickname,member_status)
+VALUES (UUID(), 'John Ranger', 'JohnnyR','ACTIVE');
+INSERT INTO member(member_id, member_name, member_nickname,member_status)
+VALUES (UUID(), 'Eddy Norman', 'Norm','ACTIVE');
 INSERT INTO member(member_id, member_name, member_nickname)
 VALUES (UUID(), 'Selena Andrews', 'Saw');
 
@@ -37,6 +37,4 @@ VALUES (UUID(),SELECT coach_id from coach where name='Coach1',SELECT member_id f
 INSERT INTO review(review_id,coach_id,member_id,mark)
 VALUES (UUID(),SELECT coach_id from coach where name='Coach1',SELECT member_id from member where member_name='Eddy Norman',7);
 
-INSERT INTO review(review_id,coach_id,member_id,mark)
-VALUES (UUID(),SELECT coach_id from coach where name='Coach2',SELECT member_id from member where member_name='Selena Andrews',8);
 
