@@ -29,7 +29,7 @@ public class FitnessClassController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateUpdateFitnessClassDto dto) {
         FitnessClass toBePersistedFitnessClass = fitnessClassMapperService.mapToEntity(dto, null);
-        createFitnessClass.Create(toBePersistedFitnessClass);
+        createFitnessClass.create(toBePersistedFitnessClass);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

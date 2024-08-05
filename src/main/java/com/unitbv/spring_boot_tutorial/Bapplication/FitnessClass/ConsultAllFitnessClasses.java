@@ -12,13 +12,14 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal=true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ConsultAllFitnessClasses {
     FitnessClasses fitnessClasses;
-    public List<FitnessClass> ConsultAll(){
-        List<FitnessClass> fitnessclasses=fitnessClasses.getFitnessClasses();
-        FitnessClassValidations.CheckMembersNumbers(fitnessclasses);
 
-        return fitnessclasses;
+    public List<FitnessClass> ConsultAll() {
+        List<FitnessClass> fitnessClasses = this.fitnessClasses.getFitnessClasses();
+        FitnessClassValidations.CheckMembersNumbers(fitnessClasses);
+
+        return fitnessClasses;
     }
 }

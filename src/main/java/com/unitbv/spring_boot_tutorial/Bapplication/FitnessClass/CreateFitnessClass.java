@@ -1,5 +1,6 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass;
 
+import com.unitbv.spring_boot_tutorial.Ddomain.Coaches;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClassValidations;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
@@ -16,8 +17,14 @@ public class CreateFitnessClass {
     @Autowired
     FitnessClasses fitnessClasses;
     FitnessClassValidations validations;
+    Coaches coaches;
 
-    public void Create(FitnessClass fitnessClass) {
+    public void create(FitnessClass fitnessClass) {
+        //TODO check if coach if from fitnessClass really exists in db
+
+        coaches.getCoachById(fitnessClass.getCoach().getId());
+        //TODO daca nu exista aruncam exceptie
+
         validations.checkMembersNumberForOneFitnessClass(fitnessClass);
         fitnessClasses.CreateOrUpdate(fitnessClass);
     }

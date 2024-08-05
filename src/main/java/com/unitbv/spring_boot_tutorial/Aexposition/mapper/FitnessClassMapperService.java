@@ -2,11 +2,9 @@ package com.unitbv.spring_boot_tutorial.Aexposition.mapper;
 
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.ConsultFitnessClassDTO;
 import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdateFitnessClassDto;
+import com.unitbv.spring_boot_tutorial.Aexposition.dto.Member.MemberDTO;
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
-import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
-import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
-import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClassValidations;
-import com.unitbv.spring_boot_tutorial.Ddomain.exceptions.UnknownFitnessClassException;
+import com.unitbv.spring_boot_tutorial.Ddomain.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,25 +13,24 @@ import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Service
 public class FitnessClassMapperService {
 
     CoachRepository coachRepository;
-    FitnessClassValidations validations;
+    Members members;
 
     public ConsultFitnessClassDTO mapFromDomain(FitnessClass fitnessClass) {
         Set<String> members = new HashSet<>();
-        LocalDateTime startTime=fitnessClass.getStartTime();
-        LocalDateTime endTime=fitnessClass.getEndTime();
-        DateTimeFormatter format= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String startTimeFormat=startTime.format(format);
-        String endTimeFormat=endTime.format(format);
-        for(var member:fitnessClass.getMembers()) {
+        LocalDateTime startTime = fitnessClass.getStartTime();
+        LocalDateTime endTime = fitnessClass.getEndTime();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String startTimeFormat = startTime.format(format);
+        String endTimeFormat = endTime.format(format);
+        for (var member : fitnessClass.getMembers()) {
             members.add(member.getNickname());
         }
         return ConsultFitnessClassDTO.builder()
@@ -52,7 +49,7 @@ public class FitnessClassMapperService {
         fitnessClass.setStartTime(LocalDateTime.parse(dto.getStartTime()));
         fitnessClass.setEndTime(LocalDateTime.parse(dto.getEndTime()));
         fitnessClass.setName(dto.getName());
-        fitnessClass.setMembers(dto.getMembers());
+        fitnessClass.setMembers(memberSet(dto.getMembers().stream().map(memberId -> memberId.getId()).toList()));
 
         if (StringUtils.hasText(dto.getCoachId())) {
             Coach coach = coachRepository.findById(dto.getCoachId()).orElse(null);
@@ -60,7 +57,15 @@ public class FitnessClassMapperService {
         } else {
             fitnessClass.setCoach(null);
         }
-
         return fitnessClass;
     }
+
+    private Set<Member> memberSet(List<String> memberDTOIdsList) {
+        Set<Member> membersSet = new HashSet<>();
+        for (String memberId : memberDTOIdsList) {
+            members.getMemberById(memberId).ifPresent(membersSet::add);
+        }
+        return membersSet;
+    }
+
 }
