@@ -49,6 +49,7 @@ public class FitnessClassMapperService {
         fitnessClass.setStartTime(LocalDateTime.parse(dto.getStartTime()));
         fitnessClass.setEndTime(LocalDateTime.parse(dto.getEndTime()));
         fitnessClass.setName(dto.getName());
+        //TODO check first if dto.members() is not empty or null
         fitnessClass.setMembers(memberSet(dto.getMembers().stream().map(memberId -> memberId.getId()).toList()));
 
         if (StringUtils.hasText(dto.getCoachId())) {
