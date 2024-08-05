@@ -32,6 +32,7 @@ public class FitnessClassController {
         createFitnessClass.Create(toBePersistedFitnessClass);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ConsultFitnessClassDTO> getById(@PathVariable String id) {
         Optional<FitnessClass> fitnessClass = consultFitnessClassesByID.ConsultById(id);
@@ -42,12 +43,14 @@ public class FitnessClassController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping
     public ResponseEntity<List<ConsultFitnessClassDTO>> consultAll() {
         List<FitnessClass> fitnessClasses = consultAllFitnessClasses.ConsultAll();
         List<ConsultFitnessClassDTO> fitnessClassDtoList = fitnessClasses.stream().map(fitnessClassMapperService::mapFromDomain).toList();
         return new ResponseEntity<>(fitnessClassDtoList, HttpStatus.OK);
     }
+
     @DeleteMapping(value = "/delete-by-id/{id}")
     public ResponseEntity<Void> delete(@PathVariable(value = "id") String id) {
         deleteFitnessClass.Delete(id);
@@ -55,11 +58,11 @@ public class FitnessClassController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ConsultFitnessClassDTO> updateCoach(
+    public ResponseEntity<ConsultFitnessClassDTO> updateFitnessClass(
             @PathVariable String id,
             @RequestBody CreateUpdateFitnessClassDto dto) {
-        FitnessClass toBeUpdatedFitnessClass=fitnessClassMapperService.mapToEntity(dto,id);
-        updateFitnessClass.Update(toBeUpdatedFitnessClass);
+        FitnessClass toBeUpdatedFitnessClass = fitnessClassMapperService.mapToEntity(dto, id);
+        updateFitnessClass.update(toBeUpdatedFitnessClass);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

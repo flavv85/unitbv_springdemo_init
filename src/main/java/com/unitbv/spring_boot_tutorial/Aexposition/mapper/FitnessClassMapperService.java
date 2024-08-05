@@ -5,6 +5,8 @@ import com.unitbv.spring_boot_tutorial.Aexposition.dto.FitnessClass.CreateUpdate
 import com.unitbv.spring_boot_tutorial.Cinfrastructure.repository.CoachRepository;
 import com.unitbv.spring_boot_tutorial.Ddomain.Coach;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClassValidations;
+import com.unitbv.spring_boot_tutorial.Ddomain.exceptions.UnknownFitnessClassException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,6 +24,7 @@ import java.util.UUID;
 public class FitnessClassMapperService {
 
     CoachRepository coachRepository;
+    FitnessClassValidations validations;
 
     public ConsultFitnessClassDTO mapFromDomain(FitnessClass fitnessClass) {
         Set<String> members = new HashSet<>();

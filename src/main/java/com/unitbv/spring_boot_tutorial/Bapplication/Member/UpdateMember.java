@@ -19,8 +19,8 @@ public class UpdateMember {
         members.CreateOrUpdate(member);
     }
     public void CheckIfMemberExists(Member member) {
-        members.getMemberById(member.getId()).orElseThrow(()->new UnknownMemberException(String.format("Member with id %s was not found",member)));
-
+        members.getMemberById(member.getId())
+                .orElseThrow(() -> new UnknownMemberException(String.format("Member with id %s was not found", member.getId())));
     }
 
 }

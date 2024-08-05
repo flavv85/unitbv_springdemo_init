@@ -14,7 +14,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FitnessClassValidations {
 
-    public static void CheckMembersNumberForOneFitnessClass(FitnessClass fitnessClass) {
+    public void checkMembersNumberForOneFitnessClass(FitnessClass fitnessClass) {
         int membersSize = fitnessClass.getMembers().size();
         if (membersSize < 3) {
             throw new UnknownFitnessClassException(String.format("Fitness class %s has too few members", fitnessClass.getName()));
@@ -22,6 +22,7 @@ public class FitnessClassValidations {
             throw new UnknownFitnessClassException(String.format("Fitness class %s has too many members", fitnessClass.getName()));
         }
     }
+
     public static void CheckMembersNumbers(List<FitnessClass> fitnessClasses) {
         List<String> tooFewMembers=new ArrayList<>();
         List<String> tooManyMembers=new ArrayList<>();

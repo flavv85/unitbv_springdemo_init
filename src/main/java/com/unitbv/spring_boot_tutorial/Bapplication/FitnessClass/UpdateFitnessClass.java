@@ -1,6 +1,7 @@
 package com.unitbv.spring_boot_tutorial.Bapplication.FitnessClass;
 
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClass;
+import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClassValidations;
 import com.unitbv.spring_boot_tutorial.Ddomain.FitnessClasses;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 public class UpdateFitnessClass {
     @Autowired
     FitnessClasses fitnessClasses;
-    public void Update(FitnessClass fitnessClass) {
+    FitnessClassValidations validations;
+    public void update(FitnessClass fitnessClass) {
+        validations.checkMembersNumberForOneFitnessClass(fitnessClass);
         fitnessClasses.CreateOrUpdate(fitnessClass);
     }
 }

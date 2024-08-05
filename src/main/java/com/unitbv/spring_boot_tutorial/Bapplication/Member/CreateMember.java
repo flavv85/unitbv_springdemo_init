@@ -11,17 +11,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal=true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CreateMember {
     @Autowired
     Members members;
+
     public void CreateUpdateMember(Member member) {
         checkIfIsValidMember(member);
         members.CreateOrUpdate(member);
     }
 
     public void checkIfIsValidMember(Member member) {
-        if(member.getId().length()!=36||member.getName().isEmpty()||member.getNickname().isEmpty())
-            throw new UnknownMemberException(String.format("Member %s is invalid",member));
+        if (member != null) {
+            if (member.getId().length() != 36 || member.getName().isEmpty() || member.getNickname().isEmpty())
+                throw new UnknownMemberException(String.format("Member %s is invalid", member));
+        }
     }
 }
