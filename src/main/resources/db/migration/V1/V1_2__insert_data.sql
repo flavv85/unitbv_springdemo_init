@@ -6,11 +6,11 @@ INSERT INTO member(member_id, member_name, member_nickname)
 VALUES (UUID(), 'Selena Andrews', 'Saw');
 
 INSERT INTO coach(coach_id, name)
-VALUES ('151916c4-291c-4125-9ae7-d045eeece9ea', 'Coach1');
+VALUES ('991916c4-291c-4125-9ae7-d045eeece9ea', 'Coach1');
 INSERT INTO coach(coach_id, name)
 VALUES (UUID(), 'Coach2');
 
-INSERT INTO fitness_class(fitness_class_id,fitness_class_name , coach_id, start_time, end_time)
+INSERT INTO fitness_class(fitness_class_id, fitness_class_name, coach_id, start_time, end_time)
 VALUES ('051916c4-291c-4125-9ae7-d045eeece9ea','Fitness_Class1' , SELECT coach_id from coach where name = 'Coach1', '2024-06-25 13:00:00', '2024-06-25 15:00:00');
 
 INSERT INTO fitness_class(fitness_class_id,fitness_class_name , coach_id, start_time, end_time)

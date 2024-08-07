@@ -1,12 +1,16 @@
 package com.unitbv.spring_boot_tutorial.Ddomain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "coach")
+@Builder
+@AllArgsConstructor
 
 public class Coach {
     @Id

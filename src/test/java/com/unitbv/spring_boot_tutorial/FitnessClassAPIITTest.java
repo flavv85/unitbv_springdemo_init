@@ -14,8 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Set;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -43,7 +45,7 @@ public class FitnessClassAPIITTest {
                 .name("zumba")
                 .startTime("2024-08-05T17:00")
                 .endTime("2024-08-05T17:00")
-                .coachId("151916c4-291c-4125-9ae7-d045eeece9ea")
+                .coachId("991916c4-291c-4125-9ae7-d045eeece9ea")
                 .members(Set.of(new MemberDTO("151916c4-291c-4125-9ae7-d045eeece9ee", "JohnnyR")))
                 .build();
 
@@ -54,4 +56,41 @@ public class FitnessClassAPIITTest {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    @Test
+    void testConsultAll() throws Exception {
+        mockMvc.perform(get("/api/fitness-class"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)));
+    }
+
+    @Test
+    void testUpdateFitnessClass() throws Exception {
+        CreateUpdateFitnessClassDto dto = CreateUpdateFitnessClassDto
+                .builder()
+                .name("pilates")
+                .coachId("991916c4-291c-4125-9ae7-d045eeece9ea")
+                .startTime("2024-06-27T21:00")
+                .endTime("2024-06-27T22:00")
+                .members(Set.of(new MemberDTO("151916c4-291c-4125-9ae7-d045eeece9ee", "JohnnyR")))
+                .build();
+
+        mockMvc.perform(put("/api/fitness-class")
+                        .param("id", "b7b57d69-d9d0-43bf-a30e-39f682853269")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dto)))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    void testDeleteFitnessClass() throws Exception {
+        mockMvc.perform(delete("/api/fitness-class")
+                        .param("id", "b7b57d69-d9d0-43bf-a30e-39f682853269")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
 }

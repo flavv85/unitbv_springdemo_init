@@ -16,10 +16,13 @@ import java.util.List;
 public class ConsultAllFitnessClasses {
     FitnessClasses fitnessClasses;
 
-    public List<FitnessClass> ConsultAll() {
-        List<FitnessClass> fitnessClasses = this.fitnessClasses.getFitnessClasses();
-        FitnessClassValidations.CheckMembersNumbers(fitnessClasses);
+    //TODO validation is need on create / update not retrieve from db
+//    FitnessClassValidations fitnessClassValidations;
 
+    public List<FitnessClass> consultAll() {
+        List<FitnessClass> fitnessClasses = this.fitnessClasses.getFitnessClasses();
+        //TODO validation is need on create / update not retrieve from db
+//        fitnessClassValidations.CheckMembersNumbers(fitnessClasses);
         return fitnessClasses;
     }
 }
