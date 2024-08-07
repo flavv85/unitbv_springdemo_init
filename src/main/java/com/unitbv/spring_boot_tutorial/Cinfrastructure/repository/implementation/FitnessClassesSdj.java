@@ -26,7 +26,6 @@ public class FitnessClassesSdj implements FitnessClasses {
 
     @Override
     public void CreateOrUpdate(FitnessClass fitnessClass) {
-
         FitnessClassesRepository.save(fitnessClass);
     }
 

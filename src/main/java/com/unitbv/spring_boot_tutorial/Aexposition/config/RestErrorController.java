@@ -32,7 +32,7 @@ public class RestErrorController extends ResponseEntityExceptionHandler {
                 .body(customErrorMessage);
     }
     @ExceptionHandler
-    public ResponseEntity<CustomErrorMessage> handleUnknownObjectException(UnknownMemberException exception) {
+    public ResponseEntity<CustomErrorMessage> handleUnknownMemberException(UnknownMemberException exception) {
         CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
                 .title("Unknown Member Exception")
                 .details(exception.getMessage())

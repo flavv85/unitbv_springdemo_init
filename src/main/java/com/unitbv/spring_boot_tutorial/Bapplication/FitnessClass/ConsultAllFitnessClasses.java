@@ -12,13 +12,17 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal=true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ConsultAllFitnessClasses {
     FitnessClasses fitnessClasses;
-    public List<FitnessClass> ConsultAll(){
-        List<FitnessClass> fitnessclasses=fitnessClasses.getFitnessClasses();
-        FitnessClassValidations.CheckMembersNumbers(fitnessclasses);
 
-        return fitnessclasses;
+    //TODO validation is need on create / update not retrieve from db
+//    FitnessClassValidations fitnessClassValidations;
+
+    public List<FitnessClass> consultAll() {
+        List<FitnessClass> fitnessClasses = this.fitnessClasses.getFitnessClasses();
+        //TODO validation is need on create / update not retrieve from db
+//        fitnessClassValidations.CheckMembersNumbers(fitnessClasses);
+        return fitnessClasses;
     }
 }

@@ -29,7 +29,7 @@ public class FitnessClassController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateUpdateFitnessClassDto dto) {
         FitnessClass toBePersistedFitnessClass = fitnessClassMapperService.mapToEntity(dto, null);
-        createFitnessClass.Create(toBePersistedFitnessClass);
+        createFitnessClass.create(toBePersistedFitnessClass);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -46,20 +46,23 @@ public class FitnessClassController {
 
     @GetMapping
     public ResponseEntity<List<ConsultFitnessClassDTO>> consultAll() {
-        List<FitnessClass> fitnessClasses = consultAllFitnessClasses.ConsultAll();
+        List<FitnessClass> fitnessClasses = consultAllFitnessClasses.consultAll();
         List<ConsultFitnessClassDTO> fitnessClassDtoList = fitnessClasses.stream().map(fitnessClassMapperService::mapFromDomain).toList();
         return new ResponseEntity<>(fitnessClassDtoList, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/delete-by-id/{id}")
-    public ResponseEntity<Void> delete(@PathVariable(value = "id") String id) {
+    // changed from PathVariable to RequestParam in order to be able the test the API
+    @DeleteMapping
+    public ResponseEntity<Void> delete(
+            @RequestParam String id) {
         deleteFitnessClass.Delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    // changed from PathVariable to RequestParam in order to be able the test the API
+    @PutMapping
     public ResponseEntity<ConsultFitnessClassDTO> updateFitnessClass(
-            @PathVariable String id,
+            @RequestParam String id,
             @RequestBody CreateUpdateFitnessClassDto dto) {
         FitnessClass toBeUpdatedFitnessClass = fitnessClassMapperService.mapToEntity(dto, id);
         updateFitnessClass.update(toBeUpdatedFitnessClass);
